@@ -16,7 +16,7 @@ O plugin <strong>allSIGE MessageBox</strong> foi criado com o propósito de faci
        
                 
 
-<table>
+<table style="font-size: 12px;">
       <thead>
           <tr>
               <th>PROPRIEDADE</th>
