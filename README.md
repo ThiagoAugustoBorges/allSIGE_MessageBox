@@ -12,8 +12,69 @@ $.allSIGEDynamicMessageBoxSettings({
 }, true);
 ```
 
-A configuração não é obrigatória inicialmente. Ela será usada apenas para uma configuração padrão entre todas as janelas de mensagens, para que não exista a necessidade de informar a mesma configuração para todas as mensagens exibidas. Tomando essa configuração de exemplo, se executarmos agora uma chamada de função do plugin, informando apenas um paramêtro. 
+A configuração não é obrigatória inicialmente. Ela será usada apenas para a entrada de valores padrões.
+Sendo necessário então apenas:
 ```javascript
-$.allSIGEDynamicMessageBox({ boxMessage: "Mensagem de exemplo do plugin" });
+$.allSIGEDynamicMessageBox({ 
+	boxMessage: "Mensagem de exemplo do plugin"
+    //closeOnClickModal: true, => closeOnClickModal IRÁ HERDAR DE Settings
+});
 ```
 Funciona! :+1:
+
+##### ENTRADAS:
+
+> BoxType
+```javascript
+//prop: boxType
+//type: string
+//accept: none, alert, error, info, success
+//default: "none"
+$.allSIGEDynamicMessageBox({ 
+	boxType: "alert"
+});
+```
+> boxSize
+```javascript
+//prop: boxSize
+//type: string
+//accept: xs, sm, md, lg, full or css metrics
+//default: "md"
+$.allSIGEDynamicMessageBox({ 
+	boxSize: "480px"
+});
+```
+> boxTitle
+```javascript
+//prop: boxTitle
+//type: string
+//accept: string
+//default: "allSIGE MessageBox"
+$.allSIGEDynamicMessageBox({ 
+	boxTitle: "MY DIALOG BOX TITLE"
+});
+```
+> boxMessage
+```javascript
+//prop: boxMessage
+//type: string
+//accept: string or html partial
+//default: ""
+$.allSIGEDynamicMessageBox({ 
+	boxMessage: "<strong>Hello!</strong>"
+});
+```
+> boxButtonAlign
+```javascript
+//prop: boxButtonAlign
+//type: string
+//accept: center, left, right
+//default: "right"
+$.allSIGEDynamicMessageBox({ 
+	boxButtonAlign: "right"
+});
+```
+
+
+
+
