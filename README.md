@@ -2,6 +2,10 @@
 
 O plugin allSIGE MessageBox foi criado com o propósito de facilitar a interação de usuários com caixas de diálogos, divindo as aplicações .js de messagem em um único plugin.
 
+<p>
+<img src="http://plugins.allsige.com/_global_img/mbox.png" alt="MessageBox" style="max-width:100%;">
+</p>
+
 ### DEFININDO A CONFIGURAÇÃO INICIAL
 
 Para o funcionamento da DOC, será adotada a seguinte configuração padrão pelo plugin (lembrando que qualquer uma dessas configurações podem ser alteradas na chamada da função do plugin) 
