@@ -1,5 +1,7 @@
 # JQuery allSIGE MessageBox
 
+http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html
+
 O plugin allSIGE MessageBox foi criado com o propósito de facilitar a interação de usuários com caixas de diálogos, divindo as aplicações .js de messagem em um único plugin.
 
 <p>
