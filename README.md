@@ -34,6 +34,7 @@ $.allSIGEDynamicMessageBox({
 	boxType: "alert"
 });
 ```
+##
 > boxSize
 ```javascript
 //prop: boxSize
@@ -44,6 +45,7 @@ $.allSIGEDynamicMessageBox({
 	boxSize: "480px"
 });
 ```
+##
 > boxTitle
 ```javascript
 //prop: boxTitle
@@ -54,6 +56,7 @@ $.allSIGEDynamicMessageBox({
 	boxTitle: "MY DIALOG BOX TITLE"
 });
 ```
+##
 > boxMessage
 ```javascript
 //prop: boxMessage
@@ -64,6 +67,7 @@ $.allSIGEDynamicMessageBox({
 	boxMessage: "<strong>Hello!</strong>"
 });
 ```
+##
 > boxButtonAlign
 ```javascript
 //prop: boxButtonAlign
@@ -74,6 +78,7 @@ $.allSIGEDynamicMessageBox({
 	boxButtonAlign: "right"
 });
 ```
+##
 > topPosition
 ```javascript
 //prop: topPosition
@@ -84,6 +89,7 @@ $.allSIGEDynamicMessageBox({
 	topPosition: "5%"
 });
 ```
+##
 > boxShowIcon
 ```javascript
 //prop: boxShowIcon
@@ -94,6 +100,7 @@ $.allSIGEDynamicMessageBox({
 	boxShowIcon: true
 });
 ```
+##
 > boxTypeIcon
 ```javascript
 //prop: boxTypeIcon
@@ -110,6 +117,7 @@ $.allSIGEDynamicMessageBox({
     },
 });
 ```
+##
 > boxShowHeaderControls
 ```javascript
 //prop: boxShowHeaderControls
@@ -120,6 +128,7 @@ $.allSIGEDynamicMessageBox({
 	boxShowHeaderControls: true
 });
 ```
+##
 > closeOnClickModal
 ```javascript
 //prop: closeOnClickModal
@@ -130,6 +139,7 @@ $.allSIGEDynamicMessageBox({
 	closeOnClickModal: true
 });
 ```
+##
 > boxAutoClose
 ```javascript
 //prop: boxAutoClose
@@ -143,6 +153,7 @@ $.allSIGEDynamicMessageBox({
     },
 });
 ```
+##
 > effects
 ```javascript
 //NEEDS: https://daneden.github.io/animate.css/animate.min.css IN PROJECT
@@ -159,6 +170,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > defaultStyle
 ```javascript
 //prop: defaultStyle
@@ -170,6 +182,7 @@ $.allSIGEDynamicMessageBox({
     //and CSS come .message-box-body .myOwnStyle
 });
 ```
+##
 > boxAlternateReturn
 ```javascript
 //prop: boxAlternateReturn
@@ -184,6 +197,7 @@ $.allSIGEDynamicMessageBox({
     //onSuccess executed in tr click event!
 });
 ```
+##
 > boxButtons
 ```javascript
 //prop: boxButtons
@@ -212,6 +226,7 @@ $.allSIGEDynamicMessageBox({
     ]
 });
 ```
+##
 > boxHeaderButtons
 ```javascript
 //prop: boxHeaderButtons
@@ -228,6 +243,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > onSuccess
 ```javascript
 //prop: onSuccess
@@ -240,6 +256,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > onBeforeShow
 ```javascript
 //prop: onBeforeShow
@@ -252,6 +269,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > onAfterShow
 ```javascript
 //prop: onAfterShow
@@ -264,6 +282,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > onBeforeClose
 ```javascript
 //prop: onBeforeClose
@@ -276,6 +295,7 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
 > onAfterClose
 ```javascript
 //prop: onAfterClose
@@ -288,6 +308,13 @@ $.allSIGEDynamicMessageBox({
     }
 });
 ```
+##
+
+Todas as demais configurações como botões, estilo do modal, tamanho do modal, etc... assumem um padrão se não definidos. 
+
+THX..  [http://www.allsige.com](https://www.allsige.com/)
+
+Thiago Augusto Borges : [My LinkedIn](https://www.linkedin.com/in/thiagoaborges?trk=nav_responsive_tab_profile_pic)
 
 
 
