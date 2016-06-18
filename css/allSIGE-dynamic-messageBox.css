@@ -1,0 +1,320 @@
+.message-box-modal,
+.message-box-container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    overflow: auto;
+    z-index: 99999;
+}
+.message-box-modal{
+    background-color: rgba(156, 156, 156, 0.8);
+}
+.message-box-body {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0px 0px 1px #595959;
+}
+.message-box-body .message-box-header .content,
+.message-box-body .message-box-message .content{
+    color: #FFF;
+}
+.message-box-body .message-box-timeout{
+    color: #818181;
+}
+.message-box-body .message-box-header .content{
+    font-weight: bold;
+}
+.message-box-body .message-box-header .options{
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 100%;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+.message-box-body .message-box-header .options .control{
+    list-style: none;
+    width: 22px;
+    float: right;
+    margin-left: 0px;
+    margin-right: 2px;
+    font-size: 15px;
+    padding: 0;
+    cursor: pointer;
+    color: #E9E9E9;
+}
+.message-box-body .message-box-header .options .control:hover{
+    transition: all 0.5s ease;
+    opacity: 0.6;
+    background-color: transparent !important;
+}
+.message-box-body .message-box-message .content{
+    min-height: 35px;
+}
+.message-box-body .message-box-message .message-box-icon{
+    width: 32px;
+    height: 32px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.message-box-body .message-box-message .message-box-icon:not(img){
+    font-size: 26px;
+    text-align: center;
+    color: #818181;
+}
+.message-box-body{
+    border-width: 1px;
+    border-style: solid;
+}
+.message-box-body .message-box-timeout{
+    margin: 10px 0px;
+    font-weight: bold;
+}
+.message-box-body .message-box-message{
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+.message-box-body .btn{
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+          touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      background-image: none;
+      border-radius: 0;
+      margin-left: 3px;
+      margin-right: 3px;
+      border-width: 1px;
+      border-style: solid;
+      color: rgb(255, 255, 255);
+}
+.message-box-body .btn:focus,
+.message-box-body .btn:active:focus,
+.message-box-body .btn.active:focus,
+.message-box-body .btn.focus,
+.message-box-body .btn:active.focus,
+.message-box-body .btn.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.message-box-body .btn:first-child{ 
+    margin-left: 0;
+}
+.message-box-body .btn:last-child{
+    margin-right: 0;
+}
+.message-box-body message-box-footer .buttons [data-amb-control="btn-footer"]{
+    text-align: center;
+}
+.message-box-body [data-is-label="true"]{
+    font-size: 13px;
+}
+.message-box-body [data-amb-control="icon"] ~ [data-amb-control="label"]{
+    margin-left: 5px;
+}
+
+.message-box-body .message-box-header,
+.message-box-body .message-box-message,
+.message-box-body .message-box-footer{
+    padding: 7px 5px;
+}
+.message-box-body .message-box-header .content,
+.message-box-body .message-box-message .content{
+    margin: 0;
+    padding: 0;
+}
+
+.message-box-body .message-box-header{
+    text-align: center;
+}
+.message-box-body .message-box-footer{
+    padding: 3px;
+    padding-top: 4px;
+}
+
+
+/* STYLE 01 */
+
+.style01.message-box-body.message-box-body-error,
+.style01.message-box-body.message-box-body-error .message-box-message{
+    border-color: rgb(227, 58, 58);
+}
+.style01.message-box-body.message-box-body-error .message-box-header,
+.style01.message-box-body.message-box-body-error .message-box-footer{
+    background-color: rgb(233, 68, 68);
+}
+.style01.message-box-body.message-box-body-error .message-box-message{
+    background-color: rgb(255, 72, 72);
+}
+.style01.message-box-body.message-box-body-error .message-box-footer .buttons .btn{
+    background-color: rgb(209, 52, 52);
+    border-color: rgb(195, 39, 39);
+    box-shadow: 0px 1px 2px rgb(162, 55, 55);
+}
+
+.style01.message-box-body.message-box-body-success,
+.style01.message-box-body.message-box-body-success .message-box-message{
+    border-color: rgb(73, 123, 62);
+}
+.style01.message-box-body.message-box-body-success .message-box-header,
+.style01.message-box-body.message-box-body-success .message-box-footer{
+    background-color: rgb(88, 146, 74);
+}
+.style01.message-box-body.message-box-body-success .message-box-message{
+    background-color: rgb(102, 152, 104);
+}
+.style01.message-box-body.message-box-body-success .message-box-footer .buttons .btn{
+    background-color: rgb(64, 119, 53);
+    border-color: rgb(54, 105, 43);
+    box-shadow: 0px 1px 2px rgb(51, 104, 40);
+}
+
+
+.style01.message-box-body.message-box-body-alert,
+.style01.message-box-body.message-box-body-alert .message-box-message{
+    border-color: rgb(132, 152, 78);
+}
+.style01.message-box-body.message-box-body-alert .message-box-header,
+.style01.message-box-body.message-box-body-alert .message-box-footer{
+    background-color: rgb(155, 153, 15);
+}
+.style01.message-box-body.message-box-body-alert .message-box-message{
+    background-color: rgb(176, 183, 72);
+}
+.style01.message-box-body.message-box-body-alert .message-box-footer .buttons .btn{
+    background-color: rgb(122, 120, 20);
+    border-color: rgb(99, 114, 60);
+    box-shadow: 0px 1px 2px rgb(131, 130, 47);
+}
+
+
+.style01.message-box-body.message-box-body-none,
+.style01.message-box-body.message-box-body-none .message-box-message{
+    border-color: rgb(111, 111, 111);
+}
+.style01.message-box-body.message-box-body-none .message-box-header,
+.style01.message-box-body.message-box-body-none .message-box-footer{
+    background-color: rgb(134, 134, 134);
+}
+.style01.message-box-body.message-box-body-none .message-box-message{
+    background-color: rgb(122, 122, 122);
+}
+.style01.message-box-body.message-box-body-none .message-box-footer .buttons .btn{
+    background-color: rgb(105, 105, 105);
+    border-color: rgb(125, 125, 125);
+    box-shadow: 0px 1px 2px rgb(92, 92, 92);
+}
+
+
+.style01.message-box-body.message-box-body-info,
+.style01.message-box-body.message-box-body-info .message-box-message{
+    border-color: rgb(101, 110, 141);
+}
+.style01.message-box-body.message-box-body-info .message-box-header,
+.style01.message-box-body.message-box-body-info .message-box-footer{
+    background-color: rgb(130, 150, 198);
+}
+.style01.message-box-body.message-box-body-info .message-box-message{
+    background-color: rgb(98, 110, 161);
+}
+.style01.message-box-body.message-box-body-info .message-box-footer .buttons .btn{
+    background-color: rgb(89, 103, 161);
+    border-color: rgb(76, 87, 126);
+    box-shadow: 0px 1px 2px rgb(67, 56, 143);
+}
+
+/* STYLE 01 */
+
+
+
+/* STYLE 02 */
+
+.style02.message-box-body .message-box-footer .buttons .btn{
+    border-color: rgb(218, 218, 218);
+    background-color: rgb(242, 242, 242);
+}
+.style02.message-box-body .message-box-message .content{
+    color: #353535;
+}
+.style02.message-box-body .message-box-message{
+    border-bottom: 1px solid rgb(215, 215, 215);
+    border-top: 1px solid rgb(236, 236, 236);
+}
+.style02.message-box-body,
+.style02.message-box-body .message-box-message{
+    border-color: rgba(219, 219, 219, 0.7);
+}
+.style02.message-box-body .message-box-footer,
+.style02.message-box-body .message-box-message{
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.style02.message-box-body.message-box-body-success .message-box-header{
+    background-color: rgb(34, 162, 127);
+}
+.style02.message-box-body.message-box-body-success .message-box-footer .buttons .btn,
+.style02.message-box-body.message-box-body-success .message-box-timeout{
+    color: rgb(84, 125, 75);
+}
+
+
+.style02.message-box-body.message-box-body-alert .message-box-header{
+    background-color: rgb(222, 195, 89);
+}
+.style02.message-box-body.message-box-body-alert .message-box-footer .buttons .btn,
+.style02.message-box-body.message-box-body-alert .message-box-timeout{
+    color: rgb(198, 173, 75);
+}
+
+
+.style02.message-box-body.message-box-body-error .message-box-header{
+    background-color: rgb(218, 86, 69);
+}
+.style02.message-box-body.message-box-body-error .message-box-footer .buttons .btn,
+.style02.message-box-body.message-box-body-error .message-box-timeout{
+    color: rgb(206, 108, 95);
+}
+
+
+.style02.message-box-body.message-box-body-info .message-box-header{
+    background-color: rgb(51, 138, 198);
+}
+.style02.message-box-body.message-box-body-info .message-box-footer .buttons .btn,
+.style02.message-box-body.message-box-body-info .message-box-timeout{
+    color: rgb(36, 115, 170);
+}
+
+.style02.message-box-body.message-box-body-none .message-box-header{
+    background-color: rgb(175, 182, 187);
+}
+.style02.message-box-body.message-box-body-none .message-box-footer .buttons .btn,
+.style02.message-box-body.message-box-body-none .message-box-timeout{
+    color: rgb(135, 135, 135);
+}
+
+/* STYLE 02 */
