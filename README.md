@@ -74,7 +74,220 @@ $.allSIGEDynamicMessageBox({
 	boxButtonAlign: "right"
 });
 ```
-
+> topPosition
+```javascript
+//prop: topPosition
+//type: string
+//accept: css metrics
+//default: "100px"
+$.allSIGEDynamicMessageBox({ 
+	topPosition: "5%"
+});
+```
+> boxShowIcon
+```javascript
+//prop: boxShowIcon
+//type: bool
+//accept: true,false
+//default: false
+$.allSIGEDynamicMessageBox({ 
+	boxShowIcon: true
+});
+```
+> boxTypeIcon
+```javascript
+//prop: boxTypeIcon
+//type: object {string,object {string,string}}
+//accept: object {string,object {string,string}}
+//default: object
+$.allSIGEDynamicMessageBox({ 
+	boxTypeIcon: {
+      "none"    : { type: "img", val: "none.png" },
+      "success" : { type: "img", val: "success.png" },
+      "error"   : { type: "ico", val: "fa fa-close" },
+      "info"    : { type: "ico", val: "glyphicons glyphicons-leaf" },
+      "alert"   : { type: "ico", val: "icon my-icon" }
+    },
+});
+```
+> boxShowHeaderControls
+```javascript
+//prop: boxShowHeaderControls
+//type: bool
+//accept: true,false
+//default: true
+$.allSIGEDynamicMessageBox({ 
+	boxShowHeaderControls: true
+});
+```
+> closeOnClickModal
+```javascript
+//prop: closeOnClickModal
+//type: bool
+//accept: true,false
+//default: true
+$.allSIGEDynamicMessageBox({ 
+	closeOnClickModal: true
+});
+```
+> boxAutoClose
+```javascript
+//prop: boxAutoClose
+//type: object {int,string}
+//accept: object {int,string}
+//default: object {0,""}
+$.allSIGEDynamicMessageBox({ 
+	boxAutoClose: { 
+    	timeout: 0, 
+        message: "Closing in %s% seconds..."
+    },
+});
+```
+> effects
+```javascript
+//NEEDS: https://daneden.github.io/animate.css/animate.min.css IN PROJECT
+//prop: effects
+//type: object {string}
+//accept: object {string}
+//default: object {string}
+$.allSIGEDynamicMessageBox({ 
+	effects: { 
+      modalIn: "fadeIn", 
+      modalOut: "fadeOut", 
+      boxIn: "fadeInDown", 
+      boxOut: "fadeOutUp" 
+    }
+});
+```
+> defaultStyle
+```javascript
+//prop: defaultStyle
+//type: string
+//accept: style01, style02, another string..
+//default: "style02"
+$.allSIGEDynamicMessageBox({ 
+	defaultStyle: "myOwnStyle"
+    //and CSS come .message-box-body .myOwnStyle
+});
+```
+> boxAlternateReturn
+```javascript
+//prop: boxAlternateReturn
+//type: object {string,bool}
+//accept: object {string,bool}
+//default: object {"",true}
+$.allSIGEDynamicMessageBox({ 
+	boxAlternateReturn: { 
+      selector: ".table > tbody > tr[data-row-id]", 
+      close: true 
+    }
+    //onSuccess executed in tr click event!
+});
+```
+> boxButtons
+```javascript
+//prop: boxButtons
+//type: array
+//accept: array of object
+//default: [{}]
+$.allSIGEDynamicMessageBox({ 
+	boxButtons: 
+    [
+      { 
+      	label: "YES", class: "btn", return: "_yes", close: true, 
+        props: { 
+          element: "button", 
+          attribs: { } 
+        } 
+      },
+      { 
+      	label: "NO", class: "btn", return: "_no", close: false, 
+        iconClass: "glyphicons glyphicons-dog", 
+        props: { element: "a", attribs: { 
+                  href:"http://www.google.com"
+                  target: "_blank"
+          		} 
+        	} 
+      },
+    ]
+});
+```
+> boxHeaderButtons
+```javascript
+//prop: boxHeaderButtons
+//type: object {string,bool,string,object {string,object}}
+//accept: object {string,bool,string,object {string,object}}
+//default: object { "OK",true,"fa fa-close", {"li",{ }} }
+$.allSIGEDynamicMessageBox({ 
+	boxHeaderButtons: { 
+      return: "clickHeader!", close: true, iconClass: "fa fa-close", 
+      props: { 
+        element: "li", 
+        attribs: { } 
+      } 
+    }
+});
+```
+> onSuccess
+```javascript
+//prop: onSuccess
+//type: function
+//accept: function
+//default: function(data){ }
+$.allSIGEDynamicMessageBox({ 
+	onSuccess: function(data){
+    	console.log(data.result);
+    }
+});
+```
+> onBeforeShow
+```javascript
+//prop: onBeforeShow
+//type: function
+//accept: function
+//default: function(){ }
+$.allSIGEDynamicMessageBox({ 
+	onBeforeShow: function(){
+    	alert('ON BEFORE SHOW MODAL!');
+    }
+});
+```
+> onAfterShow
+```javascript
+//prop: onAfterShow
+//type: function
+//accept: function
+//default: function(){ }
+$.allSIGEDynamicMessageBox({ 
+	onAfterShow: function(){
+    	alert('ON AFTER SHOW MODAL!');
+    }
+});
+```
+> onBeforeClose
+```javascript
+//prop: onBeforeClose
+//type: function
+//accept: function
+//default: function(){ }
+$.allSIGEDynamicMessageBox({ 
+	onBeforeClose: function(){
+    	alert('ON BEFORE CLOSE MODAL!');
+    }
+});
+```
+> onAfterClose
+```javascript
+//prop: onAfterClose
+//type: function
+//accept: function
+//default: function(){ }
+$.allSIGEDynamicMessageBox({ 
+	onAfterClose: function(){
+    	alert('ON AFTER CLOSE MODAL!');
+    }
+});
+```
 
 
 
