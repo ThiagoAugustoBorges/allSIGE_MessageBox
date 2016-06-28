@@ -279,6 +279,7 @@
     $.allSIGEDynamicMessageBox = function (settings) {
         var localSettings = $.allSIGEDynamicMessageBoxSettings(settings).toAMBObject();
         var lnTimeoutBoxOut = 500;
+        var isOpen = false;
         var loMBSettings = {
             "modal": {
                 tag: "div",
@@ -308,7 +309,7 @@
                     window.setTimeout(function () {
                         $($this.getDataSelector()).hide();
                     }, lnTimeoutBoxOut);
-                }
+                },
             },
             "container": {
                 tag: "div",
@@ -604,12 +605,12 @@
         var _getArrayBoxFooterButtons = function () {
             var laButtons = [];
             for (var i = 0; i < localSettings['boxButtons'].length; i++) {
-                var lsLabel = localSettings['boxButtons'][i]['label'];
-                var lsClass = localSettings['boxButtons'][i]['class'];
-                var lsReturn = localSettings['boxButtons'][i]['return'];
+                var lsLabel =     localSettings['boxButtons'][i]['label'];
+                var lsClass =     localSettings['boxButtons'][i]['class'];
+                var lsReturn =    localSettings['boxButtons'][i]['return'];
                 var lsIconClass = localSettings['boxButtons'][i]['iconClass'];
-                var lbClose = localSettings['boxButtons'][i]['close'];
-                var loProps = localSettings['boxButtons'][i]['props'];
+                var lbClose =     localSettings['boxButtons'][i]['close'];
+                var loProps =     localSettings['boxButtons'][i]['props'];
 
                 var htmlButton = $('<' + loProps['element'] + '>', { class: lsClass });
                 var htmlIcon = $('<span>', { class: lsIconClass });
@@ -675,35 +676,38 @@
             $($(loMBSettings['footer-content'].getContainer() + " [" + __dataAmbControl + "=" + __dataValueAmbIsButton + "]:eq(" + lnPosition + ")")).focus();
         };
 
-
         var _makePlugin = function () {
-            if (!_isVisibleBoxGeneric('container')) {
-                for (var lsSetting in loMBSettings) {
-                    if (!loMBSettings[lsSetting]['isBlockAutoCreate']) {
-                        _makeBoxGeneric(lsSetting);
-                    }
+            for (var lsSetting in loMBSettings) {
+                if (!loMBSettings[lsSetting]['isBlockAutoCreate']) {
+                    if (lsSetting == "modal" && $(loMBSettings[lsSetting].getDataSelector()).length > 0) {
+                        continue;
+                    } 
+                    _makeBoxGeneric(lsSetting);
                 }
-
-                
-                loMBSettings['header-content'].setContent(localSettings['boxTitle']);
-                loMBSettings['message-content'].setContent(localSettings['boxMessage']);
-                loMBSettings['footer-content'].setContent(_getArrayBoxFooterButtons());
-                if (localSettings['boxShowHeaderControls']) {
-                    loMBSettings['header-options'].setContent(_getArrayBoxHeaderButtons());
-                }
-
-                _defineAlternateReturn();
-
-                _eventButtonClick();
-                _eventCloseModalClick();
-                _eventAutoCloseLoad();
             }
+
+            loMBSettings['header-content'].setContent(localSettings['boxTitle']);
+            loMBSettings['message-content'].setContent(localSettings['boxMessage']);
+            loMBSettings['footer-content'].setContent(_getArrayBoxFooterButtons());
+            if (localSettings['boxShowHeaderControls']) {
+                loMBSettings['header-options'].setContent(_getArrayBoxHeaderButtons());
+            }
+
+            _defineAlternateReturn();
+
+            _eventButtonClick();
+            _eventCloseModalClick();
+            _eventAutoCloseLoad();
         };
+
+
+
         var _delPlugin = function () {
             __delPlugin(true);
         };
 
         var _openPlugin = function () {
+            isOpen = true;
             localSettings.onBeforeShow();
             loMBSettings['modal'].doOpen();
             loMBSettings['container'].doOpen();
@@ -712,6 +716,7 @@
         };
 
         var _closePlugin = function () {
+            isOpen = false;
             localSettings.onBeforeClose();
             loMBSettings['modal'].doClose();
             loMBSettings['container'].doClose();
@@ -721,17 +726,22 @@
             _delPlugin(true);
         };
 
-        var _delPlugin = function (delay) {
+        var _delPlugin = function (delay, deleteModal) {
             delay === undefined ? delay = false : "";
+            deleteModal === undefined ? deleteModal = false : "";
             if (delay) {
                 window.setTimeout(function () {
                     for (var lsSetting in loMBSettings) {
-                        _delBoxGeneric(lsSetting);
+                        if (lsSetting != "modal") {
+                            _delBoxGeneric(lsSetting);
+                        }
                     }
                 }, 500);
             } else {
                 for (var lsSetting in loMBSettings) {
-                    _delBoxGeneric(lsSetting);
+                    if (lsSetting != "modal") {
+                        _delBoxGeneric(lsSetting);
+                    }
                 }
             }
         };
@@ -747,11 +757,14 @@
             }
         };
 
-        var _execSuccess = function (result, location) {
+        var _execSuccess = function (result, close, location) {
             var objReturn = {};
             objReturn['result'] = result;
             objReturn['resultLocation'] = location;
             localSettings.onSuccess(objReturn);
+            if (close) {
+                _closePlugin();
+            }
         }
 
         var _eventButtonClick = function () {
@@ -759,23 +772,16 @@
             $(lsBtnSelector).find('[' + __dataAmbControl + '=' + __dataValueAmbIsButton + ']').click(function () {
                 var lsReturn = ($(this).data(__dataAmbReturn));
                 var lbClose = ($(this).data(__dataAmbClose));
-                if (lbClose) {
-                    _closePlugin();
-                    _delPlugin(true);
-                }
-                _execSuccess(lsReturn, "BUT");
+                _execSuccess(lsReturn, lbClose, "BUT");
             });
         };
+
         var _defineAlternateReturn = function () {
             var objReturn = {};
             var par = localSettings['boxAlternateReturn'];
             if (par['selector'] !== "") {
                 $(par['selector']).click(function () {
-                    _execSuccess($(par['selector']).get(0), "ALT");
-                    if (par['close']) {
-                        _closePlugin();
-                        _delPlugin(true);
-                    }
+                    _execSuccess($(par['selector']).get(0), par['close'], "ALT");
                 });
             }
         };
@@ -812,6 +818,10 @@
         };
 
         var _init = function () {
+            if ($('.message-box-body').length >= 1) {
+                _delPlugin(false, true);
+            }
+
             _makePlugin();
             _openPlugin();
             _setButtonFocus(localSettings['boxButtonDefaultPosition']);
@@ -821,6 +831,10 @@
 
         this.getMBSettings = function () {
             return loMBSettings;
+        };
+
+        this.isOpen = function () {
+            return isOpen;
         };
 
         return this;

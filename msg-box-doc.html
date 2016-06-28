@@ -601,12 +601,36 @@ $.allSIGEDynamicMessageBox({
                             <button onclick="$.allSIGEDynamicMessageBox({ boxButtonDefaultPosition: 2, boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
                         </td>
                     </tr>
+                        
                     <tr>
                         <th><strong>onSuccess</strong></th>
                         <td>Function</td>
                         <td></td>
                         <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ return: 'BOTAO1', close: true, iconClass: 'fa fa-bank' }, { return: 'BOTAO2', close: true, iconClass: 'fa fa-close' }], onSuccess: function (result) { alert('RESULTADO: ' + result.result); } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
+                            <script>
+                                function doSuccess()
+                                {
+                                    $.allSIGEDynamicMessageBox({
+                                        boxButtons: [
+                                            { return: 'BTN_BANK', close: false, iconClass: 'fa fa-bank' },
+                                            { return: 'BTN_CLOSE', close: false, iconClass: 'fa fa-close' }
+                                        ],
+                                        boxHeaderButtons: [
+                                            { return: 'BTN_EYE', close: false, iconClass: 'fa fa-eye' },
+                                        ],
+                                        onSuccess: function (result) {
+                                            $.allSIGEDynamicMessageBox({
+                                                boxType: "alert",
+                                                boxTitle: "RESULTADO",
+                                                boxMessage:"O RESULTADO É " + result.result
+                                            });
+                                        },
+
+                                    });
+                                }
+                            </script>
+
+                            <button onclick="doSuccess()" class="btn btn-primary">EXECUTAR EXEMPLO</button>
                         </td>
                     </tr>
                     <tr>
