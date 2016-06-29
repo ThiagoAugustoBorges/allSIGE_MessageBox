@@ -685,7 +685,7 @@
         var _makePlugin = function () {
             for (var lsSetting in loMBSettings) {
                 if (!loMBSettings[lsSetting]['isBlockAutoCreate']) {
-                    if (lsSetting == "modal" && $(loMBSettings[lsSetting].getDataSelector()).is(':visible')) {
+                    if (lsSetting == "modal" && $(loMBSettings[lsSetting].getDataSelector()).is(':visible') && !localSettings['boxReloadModal']) {
                         continue;
                     }
                     _makeBoxGeneric(lsSetting);
@@ -728,7 +728,7 @@
         
         var _delBoxGenericPlugin = function (delay) {
             for (var lsSetting in loMBSettings) {
-                if (lsSetting == "modal" && isChained && !delay) {
+                if (lsSetting == "modal" && isChained && !delay && !localSettings['boxReloadModal']) {
                     continue;
                 }
                 _delBoxGeneric(lsSetting);
