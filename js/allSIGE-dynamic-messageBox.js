@@ -16,6 +16,7 @@
             boxType: "none",
             boxShowIcon: false,
             boxShowHeaderControls: true,
+            boxReloadModal: false,
             boxTypeIcon: {
                 "none"    : { type: "img", val: "none.png" },
                 "success" : { type: "img", val: "success.png" },
@@ -203,6 +204,11 @@
         };
         loValidate['_doValid_closeOnClickModal'] = function () {
             var par = localSettings['closeOnClickModal'];
+            par ? par = true : par = false;
+            return par;
+        };
+        loValidate['_doValid_boxReloadModal'] = function () {
+            var par = localSettings['boxReloadModal'];
             par ? par = true : par = false;
             return par;
         };
@@ -679,9 +685,9 @@
         var _makePlugin = function () {
             for (var lsSetting in loMBSettings) {
                 if (!loMBSettings[lsSetting]['isBlockAutoCreate']) {
-                    if (lsSetting == "modal" && $(loMBSettings[lsSetting].getDataSelector()).length > 0) {
+                    if (lsSetting == "modal" && $(loMBSettings[lsSetting].getDataSelector()).is(':visible')) {
                         continue;
-                    } 
+                    }
                     _makeBoxGeneric(lsSetting);
                 }
             }
@@ -698,12 +704,6 @@
             _eventButtonClick();
             _eventCloseModalClick();
             _eventAutoCloseLoad();
-        };
-
-
-
-        var _delPlugin = function () {
-            __delPlugin(true); 
         };
 
         var _openPlugin = function () {
@@ -725,19 +725,23 @@
             _eventAutoCloseClear();
             _delPlugin(true);
         };
-
+        
+        var _delBoxGenericPlugin = function (delay) {
+            for (var lsSetting in loMBSettings) {
+                if (lsSetting == "modal" && isChained && !delay) {
+                    continue;
+                }
+                _delBoxGeneric(lsSetting);
+            }
+        }
         var _delPlugin = function (delay) {
             delay === undefined ? delay = false : "";
             if (delay) {
                 window.setTimeout(function () {
-                    for (var lsSetting in loMBSettings) {
-                        _delBoxGeneric(lsSetting);
-                    }
+                    _delBoxGenericPlugin(delay);
                 }, 500);
             } else {
-                for (var lsSetting in loMBSettings) {
-                    _delBoxGeneric(lsSetting);
-                }
+                _delBoxGenericPlugin(delay);
             }
         };
 
@@ -812,10 +816,11 @@
             }
         };
 
+        var isChained = false;
         var _init = function () {
             if ($(loMBSettings['container'].getDataSelector()).length >= 1) {
+                isChained = true;
                 _delPlugin(false);
-                
             }
 
             _makePlugin();
