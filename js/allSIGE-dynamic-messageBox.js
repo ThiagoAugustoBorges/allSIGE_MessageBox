@@ -703,7 +703,7 @@
 
 
         var _delPlugin = function () {
-            __delPlugin(true);
+            __delPlugin(true); 
         };
 
         var _openPlugin = function () {
@@ -726,22 +726,17 @@
             _delPlugin(true);
         };
 
-        var _delPlugin = function (delay, deleteModal) {
+        var _delPlugin = function (delay) {
             delay === undefined ? delay = false : "";
-            deleteModal === undefined ? deleteModal = false : "";
             if (delay) {
                 window.setTimeout(function () {
                     for (var lsSetting in loMBSettings) {
-                        if (lsSetting != "modal") {
-                            _delBoxGeneric(lsSetting);
-                        }
+                        _delBoxGeneric(lsSetting);
                     }
                 }, 500);
             } else {
                 for (var lsSetting in loMBSettings) {
-                    if (lsSetting != "modal") {
-                        _delBoxGeneric(lsSetting);
-                    }
+                    _delBoxGeneric(lsSetting);
                 }
             }
         };
@@ -818,8 +813,9 @@
         };
 
         var _init = function () {
-            if ($('.message-box-body').length >= 1) {
-                _delPlugin(false, true);
+            if ($(loMBSettings['container'].getDataSelector()).length >= 1) {
+                _delPlugin(false);
+                
             }
 
             _makePlugin();
