@@ -1,7 +1,7 @@
 /*
  * Plugin Dynamic MessageBox
  * Thiago Augusto Borges - Uberaba MG - 01/05/2016
- * Versão 2.0.0.0
+ * Versão 2.0.0.1
  *
  * Efeito: Plugin de mensagens
  * */
@@ -14,15 +14,16 @@
 
         var defaults = {
             boxType: "none",
+            boxShortcuts: { enabled: true, closeKeyCode: 27, showShortcutLabel: false },
             boxShowIcon: false,
             boxShowHeaderControls: true,
             boxReloadModal: false,
             boxTypeIcon: {
-                "none"    : { type: "img", val: "none.png" },
-                "success" : { type: "img", val: "success.png" },
-                "error"   : { type: "img", val: "error.png" },
-                "info"    : { type: "img", val: "info.png" },
-                "alert"   : { type: "img", val: "alert.png" }
+                "none": { type: "img", val: "none.png" },
+                "success": { type: "img", val: "success.png" },
+                "error": { type: "img", val: "error.png" },
+                "info": { type: "img", val: "info.png" },
+                "alert": { type: "img", val: "alert.png" }
             },
             boxSize: "md",
             boxTitle: "allSIGE MessageBox",
@@ -60,6 +61,12 @@
         loValidate['_doValid_boxType'] = function () {
             return localSettings['boxType'];
         };
+        loValidate['_doValid_boxShortcuts'] = function () {
+            var par = localSettings['boxShortcuts'];
+            par['enabled'] ? par['enabled'] = true : par['enabled'] = false;
+            par['showShortcutLabel'] ? par['showShortcutLabel'] = true : par['showShortcutLabel'] = false;
+            return par;
+        };
         loValidate['_doValid_boxSize'] = function () {
             var par = localSettings['boxSize'];
             var laBoxSizes = ['330', '420', '585', '880', '100'];
@@ -89,13 +96,15 @@
             return localSettings['boxMessage'];
         };
         loValidate['_doValid_boxButtons'] = function () {
+            //showShortcutLabel
             var par = localSettings['boxButtons'];
+            var boxShortcut = localSettings['boxShortcuts'];
             if (!$.isArray(par)) {
                 $.error(ASMBErrorIdent + "The paramater 'boxButtons' it has to be a array of objects.");
             }
 
             var loDefaultButtonConf = {
-                label: "", class: "btn", return: "OK", close: true, iconClass: "",
+                label: "", class: "btn", return: "OK", close: true, iconClass: "", shortcutCharCode: null,
                 props: {
                     element: "button",
                     attribs: {
@@ -110,6 +119,16 @@
                 par[i] = $.extend(true, {}, loDefaultButtonConf, par[i]);
                 if (par[i]['label'] === "" && par[i]['iconClass'] === "") {
                     par[i]['label'] = "OK";
+                }
+
+                var lsShortcutLabel = "";
+                if (boxShortcut['showShortcutLabel']) {
+                    lsShortcutLabel = String.fromCharCode(par[i]['shortcutCharCode']);
+                    //arrumar aqui
+                    console.log(lsShortcutLabel);
+                    if (lsShortcutLabel.trim() !== null) {
+                        par[i]['label'] += " <strong>[" + lsShortcutLabel + "]</strong>";
+                    }
                 }
                 var element = par[i]['props']['element'];
                 if (element === "" || $.isNumeric(element)) {
@@ -611,12 +630,12 @@
         var _getArrayBoxFooterButtons = function () {
             var laButtons = [];
             for (var i = 0; i < localSettings['boxButtons'].length; i++) {
-                var lsLabel =     localSettings['boxButtons'][i]['label'];
-                var lsClass =     localSettings['boxButtons'][i]['class'];
-                var lsReturn =    localSettings['boxButtons'][i]['return'];
+                var lsLabel = localSettings['boxButtons'][i]['label'];
+                var lsClass = localSettings['boxButtons'][i]['class'];
+                var lsReturn = localSettings['boxButtons'][i]['return'];
                 var lsIconClass = localSettings['boxButtons'][i]['iconClass'];
-                var lbClose =     localSettings['boxButtons'][i]['close'];
-                var loProps =     localSettings['boxButtons'][i]['props'];
+                var lbClose = localSettings['boxButtons'][i]['close'];
+                var loProps = localSettings['boxButtons'][i]['props'];
 
                 var htmlButton = $('<' + loProps['element'] + '>', { class: lsClass });
                 var htmlIcon = $('<span>', { class: lsIconClass });
@@ -704,6 +723,10 @@
             _eventButtonClick();
             _eventCloseModalClick();
             _eventAutoCloseLoad();
+
+            if (localSettings['boxShortcuts']['enabled']) {
+                _eventBoxShortcutKeydown();
+            }
         };
 
         var _openPlugin = function () {
@@ -725,7 +748,7 @@
             _eventAutoCloseClear();
             _delPlugin(true);
         };
-        
+
         var _delBoxGenericPlugin = function (delay) {
             for (var lsSetting in loMBSettings) {
                 if (lsSetting == "modal" && isChained && !delay && !localSettings['boxReloadModal']) {
@@ -754,6 +777,26 @@
                     }
                 });
             }
+        };
+
+
+        var _eventBoxShortcutKeydown = function () {
+            $('html').off('keydown');
+            $('html').on('keydown', function (e) {
+                if (e.keyCode == localSettings['boxShortcuts']['closeKeyCode']) {
+                    if (_isVisibleBoxGeneric('container')) {
+                        _closePlugin();
+                    }
+                }
+                for (var boxButton in localSettings['boxButtons']) {
+                    var charCode = localSettings['boxButtons'][boxButton]['shortcutCharCode'];
+                    if (e.keyCode == charCode) {
+                        var lsReturn = localSettings['boxButtons'][boxButton]['return'];
+                        var lbClose = localSettings['boxButtons'][boxButton]['close'];
+                        _execSuccess(lsReturn, lbClose, "BUT");
+                    }
+                }
+            });
         };
 
         var _execSuccess = function (result, close, location) {
