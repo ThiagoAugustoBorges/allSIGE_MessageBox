@@ -1,7 +1,7 @@
 /*
  * Plugin Dynamic MessageBox
  * Thiago Augusto Borges - Uberaba MG - 01/05/2016
- * Versão 2.0.0.1
+ * Versão 2.0.0.3
  *
  * Efeito: Plugin de mensagens
  * */
@@ -14,7 +14,7 @@
 
         var defaults = {
             boxType: "none",
-            boxShortcuts: { enabled: true, closeKeyCode: 27, showShortcutLabel: false },
+            boxShortcuts: { enabled: true, closeKeyCode: 27, showShortcutLabel: true },
             boxShowIcon: false,
             boxShowHeaderControls: true,
             boxReloadModal: false,
@@ -37,16 +37,17 @@
                 selector: "",
                 close: true
             },
-
+            dataParams: [],
             defaultStyle: "style01",
             topPosition: "100px",
             closeOnClickModal: true,
+            blockWhenOpen: false,
             effects: { modalIn: "fadeIn", modalOut: "fadeOut", boxIn: "fadeInDown", boxOut: "fadeOutUp" },
             onSuccess: function (result) { },
-            onBeforeShow: function () { },
-            onAfterShow: function () { },
-            onBeforeClose: function () { },
-            onAfterClose: function () { },
+            onBeforeShow: function (event) { },
+            onAfterShow: function (event) { },
+            onBeforeClose: function (event) { },
+            onAfterClose: function (event) { },
         };
 
 
@@ -211,6 +212,9 @@
         loValidate['_doValid_defaultStyle'] = function () {
             return localSettings['defaultStyle'];
         };
+        loValidate['_doValid_dataParams'] = function () {
+            return localSettings['dataParams'];
+        };
         loValidate['_doValid_topPosition'] = function () {
             var par = localSettings['topPosition'];
             var letter = par.replace(/[0-9]/g, '');
@@ -237,6 +241,11 @@
         };
         loValidate['_doValid_boxShowHeaderControls'] = function () {
             var par = localSettings['boxShowHeaderControls'];
+            par ? par = true : par = false;
+            return par;
+        };
+        loValidate['_doValid_blockWhenOpen'] = function () {
+            var par = localSettings['blockWhenOpen'];
             par ? par = true : par = false;
             return par;
         };
@@ -734,20 +743,20 @@
 
         var _openPlugin = function () {
             isOpen = true;
-            localSettings.onBeforeShow();
+            localSettings.onBeforeShow(_execOn());
             loMBSettings['modal'].doOpen();
             loMBSettings['container'].doOpen();
             loMBSettings['main'].doOpen();
-            localSettings.onAfterShow();
+            localSettings.onAfterShow(_execOn());
         };
 
         var _closePlugin = function () {
             isOpen = false;
-            localSettings.onBeforeClose();
+            localSettings.onBeforeClose(_execOn());
             loMBSettings['modal'].doClose();
             loMBSettings['container'].doClose();
             loMBSettings['main'].doClose();
-            localSettings.onAfterClose();
+            localSettings.onAfterClose(_execOn());
             $('html').off('keydown');
             _eventAutoCloseClear();
             _delPlugin(true);
@@ -811,11 +820,19 @@
             var objReturn = {};
             objReturn['result'] = result;
             objReturn['resultLocation'] = location;
+            objReturn['dataParams'] = localSettings['dataParams'];
             localSettings.onSuccess(objReturn);
             if (close) {
                 _closePlugin();
             }
         }
+
+        var _execOn = function () {
+            var objReturn = {};
+            objReturn['result'] = "onEvent";
+            objReturn['dataParams'] = localSettings['dataParams'];
+            return objReturn;
+        };
 
         var _eventButtonClick = function () {
             var lsBtnSelector = $(loMBSettings['footer-content'].getDataSelector()).selector + "," + $(loMBSettings['header-options'].getDataSelector()).selector;
@@ -869,14 +886,19 @@
 
         var isChained = false;
         var _init = function () {
+            var blockCall = false;
             if ($(loMBSettings['container'].getDataSelector()).length >= 1) {
+                blockCall = localSettings['blockWhenOpen'];
                 isChained = true;
-                _delPlugin(false);
+                if (!blockCall) {
+                    _delPlugin(false);
+                }
             }
-
-            _makePlugin();
-            _openPlugin();
-            _setButtonFocus(localSettings['boxButtonDefaultPosition']);
+            if (!blockCall) {
+                _makePlugin();
+                _openPlugin();
+                _setButtonFocus(localSettings['boxButtonDefaultPosition']);
+            }
         };
 
         _init();
