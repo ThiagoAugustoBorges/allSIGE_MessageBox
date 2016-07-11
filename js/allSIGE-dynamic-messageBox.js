@@ -96,7 +96,6 @@
             return localSettings['boxMessage'];
         };
         loValidate['_doValid_boxButtons'] = function () {
-            //showShortcutLabel
             var par = localSettings['boxButtons'];
             var boxShortcut = localSettings['boxShortcuts'];
             if (!$.isArray(par)) {
@@ -114,6 +113,7 @@
             }
 
             par.length <= 0 ? par.push(loDefaultButtonConf) : "";
+            var loChar = { 9 : "TAB", 13 : "ENTER" };
 
             for (var i = 0; i < par.length; i++) {
                 par[i] = $.extend(true, {}, loDefaultButtonConf, par[i]);
@@ -124,9 +124,9 @@
                 var lsShortcutLabel = "";
                 if (boxShortcut['showShortcutLabel']) {
                     lsShortcutLabel = String.fromCharCode(par[i]['shortcutCharCode']);
-                    //arrumar aqui
-                    console.log(lsShortcutLabel);
-                    if (lsShortcutLabel.trim() !== null) {
+                    var lnCharCodeAt = lsShortcutLabel.charCodeAt();
+                    if (lnCharCodeAt !== 0) {
+                        loChar.hasOwnProperty(lnCharCodeAt) ? lsShortcutLabel = loChar[lnCharCodeAt] : lsShortcutLabel = lsShortcutLabel;
                         par[i]['label'] += " <strong>[" + lsShortcutLabel + "]</strong>";
                     }
                 }
@@ -135,7 +135,6 @@
                     $.error(ASMBErrorIdent + "The paramater 'boxButtons[props][element]' it has to be a html element.");
                 }
             }
-
             return par;
         };
         loValidate['_doValid_boxHeaderButtons'] = function () {
@@ -627,6 +626,10 @@
         var __dataValueAmbIsLabel = "label";
         var __dataValueAmbIsIcon = "icon";
 
+        var triggerButtonClick = function (position) {
+            $($(loMBSettings['footer-content'].getContainer()).find('button')).get(position).click();
+        };
+
         var _getArrayBoxFooterButtons = function () {
             var laButtons = [];
             for (var i = 0; i < localSettings['boxButtons'].length; i++) {
@@ -745,6 +748,7 @@
             loMBSettings['container'].doClose();
             loMBSettings['main'].doClose();
             localSettings.onAfterClose();
+            $('html').off('keydown');
             _eventAutoCloseClear();
             _delPlugin(true);
         };
@@ -783,18 +787,22 @@
         var _eventBoxShortcutKeydown = function () {
             $('html').off('keydown');
             $('html').on('keydown', function (e) {
-                if (e.keyCode == localSettings['boxShortcuts']['closeKeyCode']) {
+                var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+
+                if (charCode == localSettings['boxShortcuts']['closeKeyCode']) {
                     if (_isVisibleBoxGeneric('container')) {
                         _closePlugin();
                     }
                 }
+                var lnCount = 0;
                 for (var boxButton in localSettings['boxButtons']) {
-                    var charCode = localSettings['boxButtons'][boxButton]['shortcutCharCode'];
-                    if (e.keyCode == charCode) {
-                        var lsReturn = localSettings['boxButtons'][boxButton]['return'];
-                        var lbClose = localSettings['boxButtons'][boxButton]['close'];
-                        _execSuccess(lsReturn, lbClose, "BUT");
+                    var charCodePlugin = localSettings['boxButtons'][boxButton]['shortcutCharCode'];
+                    if (charCodePlugin != undefined) {
+                        if (charCode == charCodePlugin) {
+                            triggerButtonClick(lnCount);
+                        }
                     }
+                    lnCount++;
                 }
             });
         };
