@@ -636,7 +636,7 @@
         var __dataValueAmbIsIcon = "icon";
 
         var triggerButtonClick = function (position) {
-            $($(loMBSettings['footer-content'].getContainer()).find('button')).get(position).click();
+            $($(loMBSettings['footer-content'].getContainer()).find('[' + __dataAmbControl + '=' + __dataValueAmbIsButton + ']')).get(position).click();
         };
 
         var _getArrayBoxFooterButtons = function () {
