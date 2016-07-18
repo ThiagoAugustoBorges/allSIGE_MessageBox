@@ -1,10 +1,10 @@
 /*
- * Plugin Dynamic MessageBox
- * Thiago Augusto Borges - Uberaba MG - 01/05/2016
- * Versão 2.0.0.3
- *
- * Efeito: Plugin de mensagens
- * */
+ * PLUGIN: allSIGE MessageBox
+ * OWNER: Thiago Augusto Borges - Uberaba MG
+ * VERSION: 2.0.0.4
+ * INIT: 01/05/2016
+ * LICENSE: M.I.T
+ */
 "use strict";
 (function ($) {
     var ASMBErrorIdent = "allSIGE MessageBox - ";
@@ -36,6 +36,9 @@
             boxAlternateReturn: {
                 selector: "",
                 close: true
+            },
+            boxFocusOnLoad: {
+                selector: ""
             },
             dataParams: [],
             defaultStyle: "style01",
@@ -114,7 +117,7 @@
             }
 
             par.length <= 0 ? par.push(loDefaultButtonConf) : "";
-            var loChar = { 9 : "TAB", 13 : "ENTER" };
+            var loChar = { 9: "TAB", 13: "ENTER" };
 
             for (var i = 0; i < par.length; i++) {
                 par[i] = $.extend(true, {}, loDefaultButtonConf, par[i]);
@@ -175,6 +178,12 @@
             if (!par.hasOwnProperty(localSettings['boxType'])) {
                 $.error(ASMBErrorIdent + "The paramater 'boxTypeIcon' must have a position with the same type of parameter 'boxType'.");
             }
+            return par;
+        };
+        loValidate['_doValid_boxFocusOnLoad'] = function () {
+            var par = localSettings['boxFocusOnLoad'];
+            var loDefaultFocusOnLoad = { selector: "" };
+            par = $.extend(true, {}, loDefaultFocusOnLoad, par);
             return par;
         };
         loValidate['_doValid_boxButtonDefaultPosition'] = function () {
@@ -710,7 +719,13 @@
             return laHeaderButtons;
         };
         var _setButtonFocus = function (lnPosition) {
-            $($(loMBSettings['footer-content'].getContainer() + " [" + __dataAmbControl + "=" + __dataValueAmbIsButton + "]:eq(" + lnPosition + ")")).focus();
+            setTimeout(function () {
+                $($(loMBSettings['footer-content'].getContainer() + " [" + __dataAmbControl + "=" + __dataValueAmbIsButton + "]:eq(" + lnPosition + ")")).focus();
+            }, 100);
+        };
+        var _setControlFocus = function (lsControl) {
+            var selector = loMBSettings['modal'].getContainer() + " " + lsControl + ":eq(0)";
+            $(selector).length > 0 ? setTimeout(function () { $(selector).focus(); }, 100) : _setButtonFocus(0);  
         };
 
         var _makePlugin = function () {
@@ -853,6 +868,19 @@
             }
         };
 
+        var _defineBoxFocus = function () {
+            var boxButtonDefaultPosition = localSettings['boxButtonDefaultPosition'];
+            var boxFocusOnLoad = localSettings['boxFocusOnLoad'];
+            
+            if (boxFocusOnLoad['selector'] != "") {
+                _setControlFocus(boxFocusOnLoad.selector);
+                return "loadFocus";
+            } else {
+                _setButtonFocus(boxButtonDefaultPosition);
+                return "buttonFocus";
+            }
+        };
+
         var _globalIntervalCounter;
         var _globalTimeoutCounter;
         var _eventAutoCloseClear = function () {
@@ -897,7 +925,7 @@
             if (!blockCall) {
                 _makePlugin();
                 _openPlugin();
-                _setButtonFocus(localSettings['boxButtonDefaultPosition']);
+                _defineBoxFocus();
             }
         };
 
