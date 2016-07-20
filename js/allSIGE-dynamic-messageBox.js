@@ -51,6 +51,8 @@
             onAfterShow: function (event) { },
             onBeforeClose: function (event) { },
             onAfterClose: function (event) { },
+            onModalClosing: function (event) { },
+            onModalClosed: function (event) { },
         };
 
 
@@ -263,34 +265,53 @@
             return par;
         };
         loValidate['_doValid_onSuccess'] = function () {
-            if (!$.isFunction(localSettings['onSuccess'])) {
-                $.error(ASMBErrorIdent + "The paramater 'onSuccess' it has to be a function.");
+            var par = 'onSuccess';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
             }
-            return localSettings['onSuccess'];
+            return localSettings[par];
         };
         loValidate['_doValid_onBeforeShow'] = function () {
-            if (!$.isFunction(localSettings['onBeforeShow'])) {
-                $.error(ASMBErrorIdent + "The paramater 'onBeforeShow' it has to be a function.");
+            var par = 'onBeforeShow';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
             }
-            return localSettings['onBeforeShow'];
+            return localSettings[par];
         };
         loValidate['_doValid_onAfterShow'] = function () {
-            if (!$.isFunction(localSettings['onAfterShow'])) {
-                $.error(ASMBErrorIdent + "The paramater 'onAfterShow' it has to be a function.");
+            var par = 'onAfterShow';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
             }
-            return localSettings['onAfterShow'];
+            return localSettings[par];
         };
         loValidate['_doValid_onBeforeClose'] = function () {
-            if (!$.isFunction(localSettings['onBeforeClose'])) {
-                $.error(ASMBErrorIdent + "The paramater 'onBeforeClose' it has to be a function.");
+            var par = 'onBeforeClose';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
             }
-            return localSettings['onBeforeClose'];
+            return localSettings[par];
         };
         loValidate['_doValid_onAfterClose'] = function () {
-            if (!$.isFunction(localSettings['onAfterClose'])) {
-                $.error(ASMBErrorIdent + "The paramater 'onAfterClose' it has to be a function.");
+            var par = 'onAfterClose';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
             }
-            return localSettings['onAfterClose'];
+            return localSettings[par];
+        };
+        loValidate['_doValid_onModalClosing'] = function () {
+            var par = 'onModalClosing';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
+            }
+            return localSettings[par];
+        };
+        loValidate['_doValid_onModalClosed'] = function () {
+            var par = 'onModalClosed';
+            if (!$.isFunction(localSettings[par])) {
+                $.error(ASMBErrorIdent + "The paramater '" + par + "' it has to be a function.");
+            }
+            return localSettings[par];
         };
 
 
@@ -301,25 +322,45 @@
                 if (!defaults.hasOwnProperty(lsSetting)) {
                     $.error(ASMBErrorIdent + "Setting '" + lsSetting + "' is not recognized as a word without making dictionary plugin.");
                 } else {
-                    var lsValidateFunction = '_doValid_' + lsSetting;
-                    if (!loValidate.hasOwnProperty(lsValidateFunction)) {
-                        $.error(ASMBErrorIdent + "Setting '" + lsSetting + "' needs a validation function.");
-                    }
-                    localSettings[lsSetting] = loValidate[lsValidateFunction]();
+                    __isValid(lsSetting);
                 }
             }
         }
+        var __isValid = function (setting) {
+            var lsValidateFunction = '_doValid_' + setting;
+            if (!loValidate.hasOwnProperty(lsValidateFunction)) {
+                $.error(ASMBErrorIdent + "Setting '" + setting + "' needs a validation function.");
+            }
+            localSettings[setting] = loValidate[lsValidateFunction]();
+            return true;
+        }
+
 
         _isValid();
+
         this.toAMBObject = function () {
             return localSettings;
         };
+
+        this.isValid = function (setting) {
+            return __isValid(setting);
+        };
+
+        this.isValidWithNewValue = function (setting, newValue) {
+            var backSetting = localSettings[setting];
+            localSettings[setting] = newValue;
+            var isValid = __isValid(setting);
+            localSettings[setting] = backSetting;
+            return isValid;
+        };
+
 
         return this;
     };
 
     $.allSIGEDynamicMessageBox = function (settings) {
         var localSettings = $.allSIGEDynamicMessageBoxSettings(settings).toAMBObject();
+        var $this = this;
         var lnTimeoutBoxOut = 500;
         var isOpen = false;
         var loMBSettings = {
@@ -348,8 +389,10 @@
                     $(this.getDataSelector()).removeClass(localSettings['effects']['modalIn']);
                     $(this.getDataSelector()).addClass(localSettings['effects']['modalOut']);
                     var $this = this;
+                    localSettings.onModalClosing(_execOn());
                     window.setTimeout(function () {
                         $($this.getDataSelector()).hide();
+                        localSettings.onModalClosed(_execOn());
                     }, lnTimeoutBoxOut);
                 },
             },
@@ -408,10 +451,18 @@
                 },
                 doSpecialConfig: function () {
                     $(this.getDataSelector()).addClass(localSettings['defaultStyle']);
-                    $(this.getDataSelector()).addClass(this.styleClass + '-' + localSettings['boxType']);
                     $(this.getDataSelector()).css("width", localSettings['boxSize']);
                     $(this.getDataSelector()).css("margin-top", localSettings['topPosition']);
                     $(this.getDataSelector()).css("margin-bottom", localSettings['topPosition']);
+                    this.setBoxType(localSettings['boxType']);
+                },
+                setBoxType: function (boxType) {
+                    var lsFullClass = this.styleClass + '-' + localSettings['boxType'];
+                    if ($(this.getDataSelector()).hasClass(lsFullClass)) {    
+                    } else {
+                        $(this.getDataSelector()).addClass(lsFullClass);
+                    }
+                    console.log(lsFullClass);
                 }
             },
             "header": {
@@ -938,6 +989,16 @@
         this.isOpen = function () {
             return isOpen;
         };
+
+        /* OBJETOS DE REFERÊNCIA */
+        this.setBoxType = function (boxType) {
+            if ($.allSIGEDynamicMessageBoxSettings().isValidWithNewValue('boxType', boxType)) {
+                loMBSettings['main'].setBoxType(boxType);
+            }
+            return this;
+        }
+
+
 
         return this;
     };
