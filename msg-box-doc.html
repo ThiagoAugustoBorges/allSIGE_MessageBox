@@ -1,732 +1,504 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="doc/img/favicon.png" />
-    <title>allSIGE - MessageBox</title>
-	<meta name="description" content="JQuery plugin for MessageBox or DialogBox">
-	
-	
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="doc/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="doc/css/style.css" rel="stylesheet" />
-    <link href="css/animate.css" rel="stylesheet" />
-    <link href="css/allSIGE-dynamic-messageBox.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="doc/vendors/code-mirror/lib/codemirror.css"> 
+    <title>allSIGE Plugins - MessageBox</title>
 
-	<script src="doc/js/jquery.mim.js"></script>
-	<script type="application/javascript" src="js/allSIGE-dynamic-messageBox.js"></script>
+    <!-- META -->
+    <meta property="og:title" content="allSIGE Plugins" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.allsige.com/" />
+    <meta property="og:image" content="doc/img/favicon.png" />
+    <meta property="og:site_name" content="allsige.com" />  
+    <meta property="og:description" content="Plugins desenvolvidos pela allSIGE de forma colaborativa e OpenSource, mantidos e atualizados constantemente. Todos disponíveis em GitHub.com" />
+    <meta property='busca:title' content='allSIGE.com' />
+    <meta property='busca:species' content='Home' />
+    <meta property='busca:publisher' content='www.allsige.com' />
+    <meta name="description" content="Plugins desenvolvidos pela allSIGE de forma colaborativa e OpenSource, mantidos e atualizados constantemente. Todos disponíveis em GitHub.com" />
+    <meta name="keywords" content="Plugins, JQuery, allSIGE, Tecnologia, Front-End, Programação, Javascript, Form, Javascript Form" />
+    <meta name="application-name" content="allSIGE Plugins" />
+	
+    <!-- FONTES -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type='text/css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato' type='text/css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' type='text/css'>
+
+    <!-- DOC -->
+    <link href="doc/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="doc/css/doc.css" rel="stylesheet" />
+    <link href="doc/css/dropdown.css" rel="stylesheet" />
+    <script type="text/javascript" src="doc/js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="doc/js/bootstrap.js"></script>
+    <script type="text/javascript" src="doc/js/general.js"></script>
+
+    <!-- PLUGIN -->
+	<link rel="stylesheet" href="doc/vendors/highlight/styles/github-gist.css">
+    <script src="doc/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- VENDOR -->
     <script src="doc/vendors/code-mirror/lib/codemirror.js"></script>
     <script src="doc/vendors/code-mirror/mode/javascript/javascript.js"></script>
+
+    <!-- ANALYTICS -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-50467829-1', 'auto');
         ga('send', 'pageview');
-
     </script>
+
+
+
+    <!-- EXCLUSIVO -->
+    <script src="js/allSIGE-dynamic-messageBox.js" type="application/javascript"></script>
+    <link href="css/allSIGE-dynamic-messageBox.css" rel="stylesheet">
 </head>
 
-
-
-<body style="position: relative;">
-    <style>
-        body{
-            font-family: 'Lato', sans-serif;
-        }
-        .row-example{
-            background-color: #eaeaea;
-            border: 1px solid rgb(180, 180, 180);
-            box-shadow: 1px 1px 1px #efefef;
-            padding-top: 15px;
-            padding-bottom: 12px;
-            margin-top: 10px;
-        }
-        .footer{
-            margin-top: 50px;
-        }
-    </style>
-    <div class="container-fluid">
-        <div class="row header-mark">
-            <img style="width: 200px; padding: 5px;" src="doc/img/logo-x-small.png" alt="Logomark" />
-        </div>
-    </div>
-    <div class="container">
-        <div class="jumbotron border-no-radius" style="padding: 15px;">
-            <h4>allSIGE Message Box - DOCs</h4>
-        </div>
-
-        <div class="row marketing row-example" style="background-color: #FFF;border: 1px solid #e7e7e7;">
-            <div class="col-sm-12">
-                <h4>INFORMAÇÕES INICIAIS.</h4>
-                <p>
-                    A caixa de diálogo de elemento de controle gráfico (também chamado dialog box, ou message box) é uma pequena janela que comunica informações para o usuário e solicita ou não uma resposta.
-                    <br/>
-                    Caixas de diálogo são classificadas como "restrita (modal)" ou "sem janela restrita (modeless)", dependendo se eles bloqueiam a interação com o software que iniciou o diálogo. O tipo de caixa de diálogo exibida é dependente da interação de usuário desejada.
-                </p>
-                <hr />
-                <p>
-                    O plugin <strong>allSIGE MessageBox</strong> foi criado com o propósito de facilitar a interação de usuários com caixas de diálogos, divindo as aplicações .js de messagem em um único plugin.
-                </p>
+<body>
+    <header class="main-struct main-header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <h1 class="logomark">
+                        <a href="#">
+                            <img src="doc/img/logo-x-small.png" alt="Logomark" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="lang-flag flag-usa"></li>
+                        <li class="lang-flag flag-bra"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="margin-right: 5px;" class="fa fa-tags icon"></span>DESENVOLVEDORES <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-icons" style="min-width: 325px; max-width: 325px; left: 0;">
+                                <li><span class="fa fa-graduation-cap icon"></span><a target="_blank" href="https://github.com/ThiagoAugustoBorges">Fórum</a></li>
+                                <li><span class="fa fa-github icon"></span><a target="_blank" href="https://github.com/ThiagoAugustoBorges">GitHub</a></li>
+                                <li><span class="fa fa-circle-o icon"></span><a target="_blank" href="http://www.allsige.com">allSIGE</a></li>
+                                <li><span class="fa fa-users icon"></span><a target="_blank" href="http://www.allsige.com/sobre">Sobre allSIGE</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="margin-right: 5px;" class="fa fa-cube icon"></span>PLUGINS <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-icons" style="min-width: 325px; max-width: 325px; right: 0;">
+                                <li><span class="fa fa-commenting icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_MessageBox/msg-box.html">allSIGE MessageBox</a></li>
+                                <li><span class="fa fa-file-code-o icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html">allSIGE MessageBox - DOC</a></li>
+                                <li class="divider"></li>
+                                <li><span class="fa fa-filter icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_DataForms/data-form.html">allSIGE DataForm</a></li>
+                                <li><span class="fa fa-file-code-o icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_DataForms/data-form-doc.html">allSIGE DataForm - DOC</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $.allSIGEDynamicMessageBoxSettings({
-                    boxTitle: "TÍTULO Das Configurações Gerais",
-                    closeOnClickModal: true,
-                    defaultStyle: "style02"
-                }, true);
-            });
-           
-        </script>
-        <div class="row marketing row-example" style="background-color: #FFF;border: 1px solid #e7e7e7;">
-            <div class="col-sm-12">
-                <h4>CONFIGURAÇÃO INICIAL DO PLUGIN</h4>
-                <p>
-                    Para a criação das configurações do plugin, é difinido uma hierarquia padrão para todas as configurações possíveis. São elas:
-                    <ol>
-                        <li>Configuração definida na chamada da função.</li>
-                        <li>Configuração definida na configuração do plugin.</li>
-                        <li>Configuração definida na biblioteca do plugin, assumindo valores padrões.</li>
-                    </ol>
-                    Dessa forma, vamos imaginar uma configuração do título do plugin, que é definido pelo parâmetro <code>boxTitle</code>.<br/>
+        </nav>
+    </header>
+    <main>
+        <section class="main-struct main-content container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20">
+                    <p class="n-p-n-m text-right">Último Update: 17/07/2016</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="border-no-radius m-t-20" style="padding: 5px;">
+                        <h1 class="mega-title">allSIGE Message Box - DOCUMENTATION</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20 comum-box">
+                    <h4>INFORMAÇÕES INICIAIS.</h4>
+                    <p>
+                        A caixa de diálogo de elemento de controle gráfico (também chamado dialog box, ou message box) é uma pequena janela que comunica informações para o usuário e solicita ou não uma resposta.
+                        <br>
+                        Caixas de diálogo são classificadas como "restrita (modal)" ou "sem janela restrita (modeless)", dependendo se eles bloqueiam a interação com o software que iniciou o diálogo. O tipo de caixa de diálogo exibida é dependente da interação de usuário desejada.
+                    </p>
+                    <hr>
+                    <p>
+                        O plugin <strong>allSIGE MessageBox</strong> foi criado com o propósito de facilitar a interação de usuários com caixas de diálogos, divindo as aplicações .js de messagem em um único plugin.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20 comum-box">
+                    <h4>CONFIGURAÇÃO INICIAL DO PLUGIN</h4>
+                    <p>
+                        Para a criação das configurações do plugin, é difinido uma hierarquia padrão para todas as configurações possíveis. São elas:
+                    </p><ol>
+                    <li>Configuração definida na chamada da função.</li>
+                    <li>Configuração definida na configuração do plugin.</li>
+                    <li>Configuração definida na biblioteca do plugin, assumindo valores padrões.</li>
+                </ol>
+                    Dessa forma, vamos imaginar uma configuração do título do plugin, que é definido pelo parâmetro <code>boxTitle</code>.<br>
                     Caso o título da mensagem não for definida na chamada do plugin, será feita uma segunda tentativa nas configurações gerais definida na função <code>$.allSIGEDynamicMessageBoxSettings</code>. Se mesmo assim não for encontrado um valor, o plugin assumirá um valor padrão para o título do box.
-                    <hr />
+                    <hr>
                     Esse comportamento é padrão para qualquer parâmetro definido no plugin, ou seja, você pode definir todas as 'settings' padrões, e utilizar as chamadas de funções das mensagens apenas para as informções essenciais como por exemplo o título, a mensagem, os botões, etc.
-                </p>
-                <br/>
-                <h4>DEFININDO A CONFIGURAÇÃO INICIAL</h4>
-                <p>
-                    Para o funcionamento da DOC, será adotada a seguinte configuração padrão pelo plugin (lembrando que qualquer uma dessas configurações podem ser alteradas na chamada da função do plugin)
-                </p>
-                <textarea id="code-settings">
-$.allSIGEDynamicMessageBoxSettings({
-    boxTitle: "TÍTULO Das Configurações Gerais",
-    closeOnClickModal: true,
-}, true);
-                </textarea>
-                <p>
-                    A configuração não é obrigatória inicialmente. Ela será usada apenas para uma configuração padrão entre todas as janelas de mensagens, para que não exista a necessidade de informar a mesma configuração para todas as mensagens exibidas.
-                    Tomando essa configuração de exemplo, se executarmos agora uma chamada de função do plugin, informando apenas um paramêtro.
-                    <textarea id="code-settings-2">
-
-$.allSIGEDynamicMessageBox({ boxMessage: "Mensagem de exemplo do plugin" });
-                    </textarea>
-                    O resultado será <button onclick="exemDoc();" class="btn-link btn-xs">COMO MOSTRADO AQUI</button>!
-                </p>
-                <hr/>
-                <p>
-                    Todas as demais configurações como botões, estilo do modal, tamanho do modal, etc... assumem um padrão se não definidos.
-                </p>
-
+                    <p></p>
+                    <br>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20 comum-box">
+                    <h4>DEFININDO A CONFIGURAÇÃO INICIAL</h4>
+                    <p>Para o funcionamento da DOC, será adotada a seguinte configuração padrão pelo plugin (lembrando que qualquer uma dessas configurações podem ser alteradas na chamada da função do plugin)</p>
+                    <pre><code class="hljs">$.allSIGEDynamicMessageBoxSettings({
+                            boxTitle: "allSIGE MessageBox TITLE DEFAULT", closeOnClickModal: true,
+                    }, true);</code></pre>
+                    <p>
+                        A configuração não é obrigatória inicialmente. Ela será usada apenas para uma configuração padrão entre todas as janelas de mensagens, para que não exista a necessidade de informar a mesma configuração para todas as mensagens exibidas.
+                        Tomando essa configuração de exemplo, se executarmos agora uma chamada de função do plugin, informando apenas um paramêtro.
+                    </p>
+                    <pre><code class="hljs">$.allSIGEDynamicMessageBox({
+                            boxMessage: "allSIGE MessageBox Simple Example!"
+                    });</code></pre>
+                    <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'allSIGE MessageBox Simple Example!' })" class="btn btn-primary">MESSAGE BOX EXAMPLE!</button>
+                    <hr>
+                    <p>Todas as demais configurações como botões, estilo do modal, tamanho do modal, etc... assumem um padrão se não definidos.</p>
+                </div>
             </div>
-        </div>
-        <script type="text/javascript">
-            function exemDoc() {
-               $.allSIGEDynamicMessageBox({ boxMessage: "Mensagem de exemplo do plugin" });
-            }
-            var editor1 = CodeMirror.fromTextArea(document.getElementById("code-settings"), { lineNumbers: true });
-            var editor2 = CodeMirror.fromTextArea(document.getElementById("code-settings-2"), { lineNumbers: true });
-            editor1.setSize('100%', '100px');
-            editor2.setSize('100%', '100px');
-        </script>
-
-
-
-
-
-
-        <!-------------------------------------------------------------------------------------------------------------------->
-        <div class="row marketing row-example">
-            <div class="col-lg-6">
-                <h4>EXEMPLO 01</h4>
-                <div class ="row" style="margin-bottom: 5px;">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>boxType</code></label>
-                        <select data-select-din="01" class="form-control"></select>
+            <section class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="border-no-radius m-t-5" style="padding: 5px;">
+                        <h1 class="mega-title">allSIGE Message Box - PARAMETERS</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>defaultStyle</code></label><br />
-                        <div data-button-group="01" class="btn-group" role="group" aria-label="...">
-                           
-                        </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-12 table-responsive">
+                        <h4>PARÂMETROS</h4>
+                        <table class="table table-condensed table-bordered table-details vertical-middle">
+                            <thead>
+                            <tr>
+                                <th>PROP.</th>
+                                <th>TYPE</th>
+                                <th>DEFAULT</th>
+                                <th>VALUE</th>
+                                <th>DO IT!</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="td-title" colspan="5">INSIDE BOX PARAMETERS</td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxType</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><span class="doc-type doc-type-string">"none"</span></td>
+                                <script>var var_boxType = function(){ return $('#sel_boxType').val(); }</script>
+                                <td>
+                                    <select id="sel_boxType" class="form-control" title="select" name="select">
+                                        <option value="none">none (default value)</option>
+                                        <option value="success">success</option>
+                                        <option value="error">error</option>
+                                        <option value="info">info</option>
+                                        <option value="alert">alert</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxType: var_boxType() });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxSize</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><span class="doc-type doc-type-string">"md"</span></td>
+                                <script>var var_boxSize = function(){ return $('#sel_boxSize').val(); }</script>
+                                <td>
+                                    <select id="sel_boxSize" class="form-control" title="select" name="select">
+                                        <option value="xs">xs</option>
+                                        <option value="sm">sm</option>
+                                        <option selected="selected" value="md">md (default value)</option>
+                                        <option value="lg">lg</option>
+                                        <option value="full">full</option>
+                                        <option value="435px">435px</option>
+                                        <option value="75em">75em</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxSize: var_boxSize() });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxTitle</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><span class="doc-type doc-type-string">"allSIGE MessageBox"</span></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxTitle: 'NOVO TÍTULO' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxMessage</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><span class="doc-type doc-type-string">""</span></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'NOVA DESCRIÇÃO' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxButtonAlign</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><strong>right</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtonAlign: 'center' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxShowIcon</strong></th>
+                                <td><span class="doc-type doc-type-boolean">boolean</span></td>
+                                <td><strong>false</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxTypeIcon</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone', boxTypeIcon: { 'none': { type: 'ico', val: 'fa fa-bank' } }  });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxShowHeaderControls</strong></th>
+                                <td><span class="doc-type doc-type-boolean">boolean</span></td>
+                                <td><strong>true</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxShowHeaderControls: false });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxAutoClose</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxAutoClose: { timeout: 5, message: 'Closing in %s% seconds...' } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxAlternateReturn</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxAlternateReturn: { selector: '.message-box-header', close: true }, boxMessage: 'Clique no header para executar o onSuccess do Plugin' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxHeaderButtons</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxHeaderButtons: [{ return: 'BANK', close: true, iconClass: 'fa fa-bank', props: { element: 'li', attribs: {} } }, { return: 'NONE', close: true, iconClass: 'fa fa-close', props: { element: 'li', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxButtons</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-parameters">
+                                <th><strong>boxButtonDefaultPosition</strong></th>
+                                <td><span class="doc-type doc-type-integer">int</span></td>
+                                <td><strong>1</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtonDefaultPosition: 2, boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="td-title" colspan="5">OUTSIDE BOX PARAMETERS</td>
+                            </tr>
+                            <tr class="tr-p-box-outside-parameters">
+                                <th><strong>effects</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ }</span></td>
+                                <td><strong></strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ effects: { modalIn: 'fadeIn', modalOut: 'fadeOut', boxIn: 'zoomInLeft', boxOut: 'zoomOutRight' } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-outside-parameters">
+                                <th><strong>defaultStyle</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><strong>style01</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ defaultStyle: 'style01' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-outside-parameters">
+                                <th><strong>closeOnClickModal</strong></th>
+                                <td><span class="doc-type doc-type-boolean">boolean</span></td>
+                                <td><strong>true</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ closeOnClickModal: false });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-outside-parameters">
+                                <th><strong>topPosition</strong></th>
+                                <td><span class="doc-type doc-type-string">"string"</span></td>
+                                <td><strong>100px</strong></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ topPosition: '320px' });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td class="td-title" colspan="5">CALLBACKS</td>
+                            </tr>
+                            <tr class="tr-p-box-callbacks">
+                                <th><strong>onSuccess</strong></th>
+                                <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                <td></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ return: 'BOTAO1', close: true, iconClass: 'fa fa-bank' }, { return: 'BOTAO2', close: true, iconClass: 'fa fa-close' }], onSuccess: function (result) { alert('RESULTADO: ' + result.result); } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-callbacks">
+                                <th><strong>onBeforeShow</strong></th>
+                                <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                <td></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ onBeforeShow: function () { alert('BEFORE SHOW'); } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-callbacks">
+                                <th><strong>onAfterShow</strong></th>
+                                <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                <td></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ onAfterShow: function () { alert('AFTER SHOW'); } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-callbacks">
+                                <th><strong>onBeforeClose</strong></th>
+                                <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                <td></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ onBeforeClose: function () { alert('BEFORE CLOSE'); } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            <tr class="tr-p-box-callbacks">
+                                <th><strong>onAfterClose</strong></th>
+                                <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                <td></td>
+                                <td>
+                                    <select class="form-control" title="select" name="select">
+                                        <option value="">VALOR PADRÃO</option>
+                                    </select>
+                                </td>
+                                <td width="100px;" align="right">
+                                    <button onclick="$.allSIGEDynamicMessageBox({ onAfterClose: function () { alert('AFTER CLOSE'); } });" class="btn btn-primary">EXECUTE!</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
                     </div>
                 </div>
-                <br/>
-                <p><strong>Exemplo básico de mensagem com as configurações padrões definidas no plugin.</strong></p>
-            </div>
-            <div class="col-lg-6">
-
-
-<textarea id="code-0">
-$.allSIGEDynamicMessageBox({
-    boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-});
-</textarea>
-
-                <script type="text/javascript">
-                    var exemplo0 = function (style,type) {
-                        $.allSIGEDynamicMessageBox({
-                            boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-                            boxType: type,
-                            defaultStyle: style
-                        });
-                    }
-                </script>
-            </div>
-            <script type="text/javascript">
-                var editor = CodeMirror.fromTextArea(document.getElementById("code-0"), {
-                    lineNumbers: true
-                });
-                editor.setSize('100%', '100%');
-            </script>
-        </div>
-        <!-------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-        <!-------------------------------------------------------------------------------------------------------------------->
-        <div class="row marketing row-example">
-            <div class="col-lg-6">
-                <h4>EXEMPLO 02</h4>
-                <div class="row" style="margin-bottom: 5px;">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>boxType</code></label>
-                        <select data-select-din="02" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>defaultStyle</code></label><br/>
-                        <div data-button-group="02" class="btn-group" role="group" aria-label="...">
-
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <p><strong>Mensagem em que não se fecha ao se clicar fora da caixa, os botões são posicionados ao lado oposto do padrão e o efeito de entrada do box da modal é do tipo 'zoomIn'.</strong></p>
-            </div>
-            <div class="col-lg-6">
-
-
-                <textarea id="code-1">
-$.allSIGEDynamicMessageBox({
-    boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-    effects: { boxIn: "zoomIn" },
-    boxButtonAlign: "left",
-    closeOnClickModal: false
-});
-                </textarea>
-
-                <script type="text/javascript">
-                    var exemplo1 = function (style, type) {
-                        $.allSIGEDynamicMessageBox({
-                            boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-                            boxType: type,
-                            defaultStyle: style,
-                            effects: { boxIn: "zoomIn" },
-                            boxButtonAlign: "left",
-                            closeOnClickModal: false
-                        });
-                    }
-                </script>
-            </div>
-            <script type="text/javascript">
-                var editor = CodeMirror.fromTextArea(document.getElementById("code-1"), {
-                    lineNumbers: true
-                });
-                editor.setSize('100%', '100%');
-            </script>
-        </div>
-        <!-------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-        <!-------------------------------------------------------------------------------------------------------------------->
-        <div class="row marketing row-example">
-            <div class="col-lg-6">
-                <h4>EXEMPLO 03</h4>
-                <div class="row" style="margin-bottom: 5px;">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>boxType</code></label>
-                        <select data-select-din="03" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>defaultStyle</code></label><br />
-                        <div data-button-group="03" class="btn-group" role="group" aria-label="...">
-
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <p><strong>Mensagem em que o box de mensagem recebe o tamanho LG, o título padrão das mensagens é substituido por outro definido na chamada da função e todos os efeitos de transição tanto do modal quanto da box message são modificados.</strong></p>
-            </div>
-            <div class="col-lg-6">
-
-
-                <textarea id="code-2">
-$.allSIGEDynamicMessageBox({
-    boxTitle: "TÍTULO DEFINIDO NA CHAMADA DA FUNÇÃO",
-    boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-    effects: { boxIn: "swing", boxOut: "bounceOut", modalIn: "flash", modalOut: "bounceOut" },
-    boxSize: "lg"
-});
-                </textarea>
-
-                <script type="text/javascript">
-                    var exemplo2 = function (style, type) {
-                        $.allSIGEDynamicMessageBox({
-                            boxTitle: "TÍTULO DEFINIDO NA CHAMADA DA FUNÇÃO",
-                            boxMessage: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.",
-                            boxType: type,
-                            defaultStyle: style,
-                            effects: { boxIn: "swing", boxOut: "bounceOut", modalIn: "flash", modalOut: "bounceOut" },
-                            boxSize: "lg"
-                        });
-                    }
-                </script>
-            </div>
-            <script type="text/javascript">
-                var editor = CodeMirror.fromTextArea(document.getElementById("code-2"), {
-                    lineNumbers: true
-                });
-                editor.setSize('100%', '100%');
-            </script>
-        </div>
-        <!-------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-        <!-------------------------------------------------------------------------------------------------------------------->
-        <div class="row marketing row-example">
-            <div class="col-lg-6">
-                <h4>EXEMPLO 04</h4>
-                <div class="row" style="margin-bottom: 5px;">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>boxType</code></label>
-                        <select data-select-din="04" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label>PARÂMETRO: <code>defaultStyle</code></label><br />
-                        <div data-button-group="04" class="btn-group" role="group" aria-label="...">
-
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <p><strong>Mensagem em que o box de mensagem recebe o tamanho LG que contem 3 controles. Um link, que abre uma nova aba para o google, um botão que executa uma função personalizada no evento 'onclick' e outro botão que apenas fecha a message box.</strong></p>
-            </div>
-            <div class="col-lg-6">
-
-
-                <textarea id="code-3">
-$.allSIGEDynamicMessageBox({
-    boxMessage: "NÃO FOI POSSÍVEL EXECUTAR A TAREFA: Escolha uma das ações abaixo!",
-    boxSize: "lg",
-    boxButtons:
-    [
-        {
-            label: 'IR PARA O GOOGLE.COM',
-            props: {
-                element: "a",
-                attribs: {
-                    href: "https://www.google.com.br/search?q=Como+programar+sem+usar+o+stackoverflow+ou+o+google%3F&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=7eM0V6SGG8qU8QfG_piIDw",
-                    target: "_blank"
-                }
-            },
-        },
-        {
-            label: 'APENAS FECHAR',
-        },
-        {
-            label: 'EXECUTAR FUNÇÃO E NÃO FECHAR',
-            props: {
-                element: "button",
-                attribs: {
-                    onclick: "alert('EXECUTAR FUNÇÃO E NÃO FECHAR!')",
-                }
-            },
-            close: false
-        }
-    ]
-});
-                </textarea>
-
-                <script type="text/javascript">
-                    var exemplo3 = function (style, type) {
-                        $.allSIGEDynamicMessageBox({
-                            boxMessage: "NÃO FOI POSSÍVEL EXECUTAR A TAREFA: Escolha uma das ações abaixo!",
-                            boxType: type,
-                            defaultStyle: style,
-                            boxSize: "lg",
-                            boxButtons:
-                            [
-                                {
-                                    label: 'IR PARA O GOOGLE.COM',
-                                    props: {
-                                        element: "a",
-                                        attribs: {
-                                            href: "https://www.google.com.br/search?q=Como+programar+sem+usar+o+stackoverflow+ou+o+google%3F&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=7eM0V6SGG8qU8QfG_piIDw",
-                                            target: "_blank"
-                                        }
-                                    },
-                                },
-                                {
-                                    label: 'APENAS FECHAR',
-                                    class: "btn btn-dangger",
-                                    props: {
-                                        element: "button",
-                                    },
-                                },
-                                {
-                                    label: 'EXECUTAR FUNÇÃO E NÃO FECHAR',
-                                    props: {
-                                        element: "button",
-                                        attribs: {
-                                            onclick: "alert('EXECUTEI!')",
-                                        }
-                                    },
-                                    close: false
-                                }
-                            ]
-                        });
-                    }
-                </script>
-            </div>
-            <script type="text/javascript">
-                var editor = CodeMirror.fromTextArea(document.getElementById("code-3"), {
-                    lineNumbers: true
-                });
-                editor.setSize('100%', '320px');
-            </script>
-        </div>
-        <!-------------------------------------------------------------------------------------------------------------------->
-
-
-        <style scoped="scoped">
-            .table-details > tbody > tr > th,
-            .table-details > tbody > tr > td{
-                font-size: 13px;
-                text-align: center;
-                background-color: rgb(43, 101, 152);
-                color: #FFF;
-                padding-top: 12px;
-            }
-            .table-details > tbody > tr > td:not(:last-child){
-                background-color: rgb(255, 255, 255);
-                color: rgb(83, 83, 83);
-                font-family: 'Courier', monospace;
-                text-align: left;
-            }
-            .table-details > tbody > tr > td:last-child{
-                background-color: rgb(255, 255, 255);
-            }
-        </style>
-        <div class="row marketing row-example">
-            <div class="col-lg-12">
-                <h4>PARÂMETROS</h4>
-                <table class="table table-condensed table-bordered table-hover table-details">
-                    <thead>
-                    <tr>
-                        <th>PROPRIEDADE</th>
-                        <td style="background-color: #FFF;">VALORES</td>
-                        <td style="background-color: #FFF;">PADRÃO</td>
-                        <td style="background-color: #FFF;">EXEMPLO</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th><strong>boxType</strong></th>
-                        <td>none, alert, error, info, success</td>
-                        <td><strong>none</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxType: 'error' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxSize</strong></th>
-                        <td>xs, sm, md, lg, full, ou qualquer outra medida CSS. Ex: 115px</td>
-                        <td><strong>md</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxSize: 'xs' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxTitle</strong></th>
-                        <td>texto do título.</td>
-                        <td><strong>allSIGE MessageBox</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxTitle: 'NOVO TÍTULO' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxMessage</strong></th>
-                        <td>mensagem ou html partial do modal.</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'NOVA DESCRIÇÃO' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxButtonAlign</strong></th>
-                        <td>center, left, right</td>
-                        <td><strong>right</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxButtonAlign: 'center' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>topPosition</strong></th>
-                        <td>medida css</td>
-                        <td><strong>100px</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ topPosition: '320px' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxShowIcon</strong></th>
-                        <td>true, false</td>
-                        <td><strong>false</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxTypeIcon</strong></th>
-                        <td>"none" : { type: "ico", val: "fa fa-close" },<br>"error" : { type: "img", val: "error.png" },</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone', boxTypeIcon: { 'none': { type: 'ico', val: 'fa fa-bank' } }  });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxShowHeaderControls</strong></th>
-                        <td>true, false</td>
-                        <td><strong>true</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxShowHeaderControls: false });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>closeOnClickModal</strong></th>
-                        <td>true, false</td>
-                        <td><strong>true</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ closeOnClickModal: false });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxAutoClose</strong></th>
-                        <td>{ timeout: 0, message: "Closing in %s% seconds..." }</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxAutoClose: { timeout: 5, message: 'Closing in %s% seconds...' } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>effects</strong></th>
-                        <td>{ modalIn: "fadeIn", modalOut: "fadeOut", boxIn: "fadeInDown", boxOut: "fadeOutUp" }</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ effects: { modalIn: 'fadeIn', modalOut: 'fadeOut', boxIn: 'zoomInLeft', boxOut: 'zoomOutRight' } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>defaultStyle</strong></th>
-                        <td>style name. Ex: ".style",".myStyle"</td>
-                        <td><strong>style01</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ defaultStyle: 'style01' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxAlternateReturn</strong></th>
-                        <td>{ selector: "", close: true }</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxAlternateReturn: { selector: '.message-box-header', close: true }, boxMessage: 'Clique no header para executar o onSuccess do Plugin' });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxHeaderButtons</strong></th>
-                        <td>{ return: "OK", close: true, iconClass: "fa fa-close", props: { element: "li", attribs: { } } }</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxHeaderButtons: [{ return: 'BANK', close: true, iconClass: 'fa fa-bank', props: { element: 'li', attribs: {} } }, { return: 'NONE', close: true, iconClass: 'fa fa-close', props: { element: 'li', attribs: {} } }] });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxButtons</strong></th>
-                        <td>{ label: "", class: "btn", return: "OK", close: true, iconClass: "", props: { element: "button", attribs: { } } }</td>
-                        <td><strong></strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>boxButtonDefaultPosition</strong></th>
-                        <td>int</td>
-                        <td><strong>1</strong></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ boxButtonDefaultPosition: 2, boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                        
-                    <tr>
-                        <th><strong>onSuccess</strong></th>
-                        <td>Function</td>
-                        <td></td>
-                        <td align="right" width="150px;">
-                            <script>
-                                function doSuccess()
-                                {
-                                    $.allSIGEDynamicMessageBox({
-                                        boxButtons: [
-                                            { return: 'BTN_BANK', close: false, iconClass: 'fa fa-bank' },
-                                            { return: 'BTN_CLOSE', close: false, iconClass: 'fa fa-close' }
-                                        ],
-                                        boxHeaderButtons: [
-                                            { return: 'BTN_EYE', close: false, iconClass: 'fa fa-eye' },
-                                        ],
-                                        onSuccess: function (result) {
-                                            $.allSIGEDynamicMessageBox({
-                                                boxType: "alert",
-                                                boxTitle: "RESULTADO",
-                                                boxMessage:"O RESULTADO É " + result.result
-                                            });
-                                        },
-
-                                    });
-                                }
-                            </script>
-
-                            <button onclick="doSuccess()" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>onBeforeShow</strong></th>
-                        <td>Function</td>
-                        <td></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ onBeforeShow: function () { alert('BEFORE SHOW'); } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>onAfterShow</strong></th>
-                        <td>Function</td>
-                        <td></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ onAfterShow: function () { alert('AFTER SHOW'); } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>onBeforeClose</strong></th>
-                        <td>Function</td>
-                        <td></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ onBeforeClose: function () { alert('BEFORE CLOSE'); } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>onAfterClose</strong></th>
-                        <td>Function</td>
-                        <td></td>
-                        <td align="right" width="150px;">
-                            <button onclick="$.allSIGEDynamicMessageBox({ onAfterClose: function () { alert('AFTER CLOSE'); } });" class="btn btn-primary">EXECUTAR EXEMPLO</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <br>
-            </div>
-        </div>
-
-
-
-
-        <footer class="footer">
-            <p>&copy; 2016 allSIGE, Inc.</p>
-        </footer>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            var lnButtonExamples = 5 + 1;
-            $('[data-select-din]').each(function (i, e) {
-                var laTypes = ['none', 'error', 'alert', 'success', 'info'];
-                var laTypesDesc = ['Valor Padrão', 'Mensagem de Erro', 'Mensagem de Aviso', 'Mensagem de Sucesso', 'Mensagem de Informação'];
-                for (var a = 0; a < laTypes.length; a++) {
-                    var htmlOption = $('<option>', { value: laTypes[a] }).html(laTypes[a] + ' - ' + laTypesDesc[a]);
-                    a == 2 ? $(htmlOption).attr('selected', 'selected') : "";
-                    $(htmlOption).appendTo(e);
-                }
-            });
-            $('[data-button-group]').each(function (i, e) {
-                var lsGroup = $(e).data('button-group');
-                var htmlButton;
-                var lsFuncName;
-                var a = 1;
-                var lsStyle;
-                for (a ; a < lnButtonExamples; ++a) {
-                    lsStyle = "style0" + a;
-                    htmlButton = $('<button>', { type: "button", class: "btn btn-default btn-sm" });
-                    $(htmlButton).html('STYLE 0' + a);
-                    $(htmlButton).data('style-type', a);
-                    lsFuncName = 'exemplo' + i;
-                    $(htmlButton).click(function () {
-                        window[lsFuncName]('style0' + $(this).data('style-type') , $('[data-select-din="' + lsGroup + '"] option:selected').val());
-                    });
-                    $(htmlButton).appendTo(e);
-                }
-            });
-        });
-    </script>
+            </section>
+        </section>
+    </main>
+    <footer class="main-struct main-footer">
+        <section class="pre-footer"></section>
+        <section class="foo-footer"></section>
+    </footer>
 </body>
 </html>
