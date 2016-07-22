@@ -169,3 +169,19 @@ h1, h2, h3, h4, h5, h6{
 .tr-p-box-callbacks{
     background-color: #e7f3ff;
 }
+
+.dropdown-menu.dropdown-menu-icons > li > a{
+    border-radius: 0 !important;
+}
+.dropdown-menu.dropdown-menu-icons > li > a:hover{
+    transition: all 0.4s ease;
+}
+.dropdown-menu.dropdown-menu-icons > li > a.featured:hover{
+    background-color: rgb(26, 153, 197);
+    color: #FFF;
+}
+
+.navbar{
+    border: none !important;
+    border-bottom: 1px solid rgb(222, 222, 222) !important;
+}
