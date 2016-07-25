@@ -559,7 +559,6 @@
             "message-content": {
                 tag: "div",
                 styleClass: "content",
-                hasSpecialConfig: true,
 
                 getContainer: function () {
                     return loMBSettings['message'].getDataSelector();
@@ -572,13 +571,6 @@
                 },
                 setContent: function (content) {
                     $(this.getDataSelector()).html(content);
-                },
-                doSpecialConfig: function () {
-                    var showIcon = localSettings['boxShowIcon'];
-                    if (showIcon) {
-                        loMBSettings['message-icon'].doSpecialConfig();
-                        _makeBoxGeneric('message-icon');
-                    }
                 },
             },
             "footer": {
@@ -928,7 +920,7 @@
         };
 
         var _eventButtonClick = function () {
-            var lsBtnSelector = $(loMBSettings['footer-content'].getDataSelector()).selector + "," + $(loMBSettings['header-options'].getDataSelector()).selector;
+            var lsBtnSelector = loMBSettings['footer-content'].getDataSelector() + "," + loMBSettings['header-options'].getDataSelector();
             $(lsBtnSelector).find('[' + __dataAmbControl + '=' + __dataValueAmbIsButton + ']').click(function () {
                 var lsReturn = ($(this).data(__dataAmbReturn));
                 var lbClose = ($(this).data(__dataAmbClose));
