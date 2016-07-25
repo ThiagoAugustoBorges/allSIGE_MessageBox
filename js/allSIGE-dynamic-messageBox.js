@@ -1,7 +1,7 @@
 /*
  * PLUGIN: allSIGE MessageBox
  * OWNER: Thiago Augusto Borges - Uberaba MG
- * VERSION: 2.0.0.4
+ * VERSION: 2.1.0.0
  * INIT: 01/05/2016
  * LICENSE: M.I.T
  */
@@ -9,6 +9,9 @@
 (function ($) {
     var ASMBErrorIdent = "allSIGE MessageBox - ";
     var ASMBSettings;
+    $.allSIGEDynamicEnvironment = function () {
+
+    };
     $.allSIGEDynamicMessageBoxSettings = function (settings, cascade) {
         cascade === undefined ? cascade = false : "";
 
@@ -19,11 +22,11 @@
             boxShowHeaderControls: true,
             boxReloadModal: false,
             boxTypeIcon: {
-                "none": { type: "img", val: "none.png" },
+                "none":    { type: "img", val: "none.png"    },
                 "success": { type: "img", val: "success.png" },
-                "error": { type: "img", val: "error.png" },
-                "info": { type: "img", val: "info.png" },
-                "alert": { type: "img", val: "alert.png" }
+                "error":   { type: "img", val: "error.png"   },
+                "info":    { type: "img", val: "info.png"    },
+                "alert":   { type: "img", val: "alert.png"   }
             },
             boxSize: "md",
             boxTitle: "allSIGE MessageBox",
@@ -314,8 +317,6 @@
             return localSettings[par];
         };
 
-
-
         var _isValid = function () {
             for (var lsSetting in localSettings) {
                 //Primeira validação: Vejo se o parametro passado faz parte do meu dicionário
@@ -325,7 +326,8 @@
                     __isValid(lsSetting);
                 }
             }
-        }
+        };
+
         var __isValid = function (setting) {
             var lsValidateFunction = '_doValid_' + setting;
             if (!loValidate.hasOwnProperty(lsValidateFunction)) {
@@ -333,33 +335,23 @@
             }
             localSettings[setting] = loValidate[lsValidateFunction]();
             return true;
-        }
-
+        };
 
         _isValid();
 
-        this.toAMBObject = function () {
+        this.getAMBObject = function () {
             return localSettings;
         };
 
-        this.isValid = function (setting) {
-            return __isValid(setting);
+        this.getAMBSetting = function (setting) {
+            return localSettings[setting];
         };
-
-        this.isValidWithNewValue = function (setting, newValue) {
-            var backSetting = localSettings[setting];
-            localSettings[setting] = newValue;
-            var isValid = __isValid(setting);
-            localSettings[setting] = backSetting;
-            return isValid;
-        };
-
 
         return this;
     };
 
     $.allSIGEDynamicMessageBox = function (settings) {
-        var localSettings = $.allSIGEDynamicMessageBoxSettings(settings).toAMBObject();
+        var localSettings = $.allSIGEDynamicMessageBoxSettings(settings).getAMBObject();
         var $this = this;
         var lnTimeoutBoxOut = 500;
         var isOpen = false;
@@ -449,20 +441,47 @@
                         $($this.getDataSelector()).hide();
                     }, lnTimeoutBoxOut);
                 },
-                doSpecialConfig: function () {
-                    $(this.getDataSelector()).addClass(localSettings['defaultStyle']);
-                    $(this.getDataSelector()).css("width", localSettings['boxSize']);
-                    $(this.getDataSelector()).css("margin-top", localSettings['topPosition']);
-                    $(this.getDataSelector()).css("margin-bottom", localSettings['topPosition']);
-                    this.setBoxType(localSettings['boxType']);
-                },
                 setBoxType: function (boxType) {
-                    var lsFullClass = this.styleClass + '-' + localSettings['boxType'];
-                    if ($(this.getDataSelector()).hasClass(lsFullClass)) {    
-                    } else {
-                        $(this.getDataSelector()).addClass(lsFullClass);
+                    var lsFullClassLocal = this.styleClass + '-' + boxType;
+                    var lsFullClassSetti = this.styleClass + '-' + localSettings['boxType'];
+                    if ($(this.getDataSelector()).hasClass(lsFullClassSetti)) {
+                        $(this.getDataSelector()).removeClass(lsFullClassSetti);
                     }
-                    console.log(lsFullClass);
+                    $(this.getDataSelector()).addClass(lsFullClassLocal);
+                },
+                setBoxSize: function (boxSize, effect) {
+                    effect === undefined ? effect = true : effect = effect;
+                    if (effect) {
+                        $(this.getDataSelector()).animate({ width: boxSize }, lnTimeoutBoxOut);
+                    } else {
+                        $(this.getDataSelector()).css("width", boxSize);
+                    }
+                },
+                setTopPosition: function (topPosition, effect, callback) {
+                    effect === undefined ? effect = true : effect = effect;
+                    if (effect) {
+                        $(this.getDataSelector()).animate({
+                            "margin-top": topPosition,
+                            "margin-bottom": topPosition
+                        }, lnTimeoutBoxOut, function () {
+                            if (callback !== undefined) {
+                                callback();
+                            }
+                        });
+                    } else {
+                        $(this.getDataSelector()).css("margin-top", topPosition);
+                        $(this.getDataSelector()).css("margin-bottom", topPosition);
+                    }
+                },
+                setDefaultStyle: function (defaultStyle) {
+                    $(this.getDataSelector()).removeClass(localSettings['defaultStyle']);
+                    $(this.getDataSelector()).addClass(defaultStyle);
+                },
+                doSpecialConfig: function () {
+                    this.setDefaultStyle(localSettings['defaultStyle']);
+                    this.setTopPosition(localSettings['topPosition'], false);
+                    this.setBoxType(localSettings['boxType']);
+                    this.setBoxSize(localSettings['boxSize'], false);
                 }
             },
             "header": {
@@ -499,6 +518,7 @@
             "header-options": {
                 tag: "ul",
                 styleClass: "options",
+                hasSpecialConfig: true,
 
                 getContainer: function () {
                     return loMBSettings['header'].getDataSelector();
@@ -511,6 +531,15 @@
                 },
                 setContent: function (content) {
                     $(this.getDataSelector()).html(content);
+                },
+                setBoxShowHeaderControls: function (boxShowHeaderControls) {
+                    this.setContent('');
+                    if (boxShowHeaderControls) {
+                        this.setContent(_getArrayBoxHeaderButtons());
+                    }
+                },
+                doSpecialConfig: function () {
+                    this.setBoxShowHeaderControls(localSettings['boxShowHeaderControls']);
                 }
             },
             "message": {
@@ -542,7 +571,7 @@
                     return data;
                 },
                 setContent: function (content) {
-                    $(this.getDataSelector()).html($(this.getDataSelector()).html() + content);
+                    $(this.getDataSelector()).html(content);
                 },
                 doSpecialConfig: function () {
                     var showIcon = localSettings['boxShowIcon'];
@@ -641,7 +670,6 @@
             },
         };
 
-
         //type
         var isTypeValid = function (type) {
             if (!loMBSettings.hasOwnProperty(type)) {
@@ -685,7 +713,6 @@
             $(loMBSettings[type].getDataSelector()).remove();
             return void 0;
         };
-
 
         var __dataAmbReturn = "amb-box-return";
         var __dataAmbClose = "amb-box-close";
@@ -739,6 +766,7 @@
             }
             return laButtons;
         };
+
         var _getArrayBoxHeaderButtons = function () {
             var laHeaderButtons = [];
             var par = localSettings['boxHeaderButtons'];
@@ -769,14 +797,16 @@
             }
             return laHeaderButtons;
         };
+
         var _setButtonFocus = function (lnPosition) {
             setTimeout(function () {
                 $($(loMBSettings['footer-content'].getContainer() + " [" + __dataAmbControl + "=" + __dataValueAmbIsButton + "]:eq(" + lnPosition + ")")).focus();
             }, 100);
         };
+
         var _setControlFocus = function (lsControl) {
             var selector = loMBSettings['modal'].getContainer() + " " + lsControl + ":eq(0)";
-            $(selector).length > 0 ? setTimeout(function () { $(selector).focus(); }, 100) : _setButtonFocus(0);  
+            $(selector).length > 0 ? setTimeout(function () { $(selector).focus(); }, 100) : _setButtonFocus(0);
         };
 
         var _makePlugin = function () {
@@ -792,10 +822,7 @@
             loMBSettings['header-content'].setContent(localSettings['boxTitle']);
             loMBSettings['message-content'].setContent(localSettings['boxMessage']);
             loMBSettings['footer-content'].setContent(_getArrayBoxFooterButtons());
-            if (localSettings['boxShowHeaderControls']) {
-                loMBSettings['header-options'].setContent(_getArrayBoxHeaderButtons());
-            }
-
+           
             _defineAlternateReturn();
 
             _eventButtonClick();
@@ -835,7 +862,8 @@
                 }
                 _delBoxGeneric(lsSetting);
             }
-        }
+        };
+
         var _delPlugin = function (delay) {
             delay === undefined ? delay = false : "";
             if (delay) {
@@ -846,7 +874,6 @@
                 _delBoxGenericPlugin(delay);
             }
         };
-
 
         var _eventCloseModalClick = function () {
             if (localSettings['closeOnClickModal']) {
@@ -922,7 +949,7 @@
         var _defineBoxFocus = function () {
             var boxButtonDefaultPosition = localSettings['boxButtonDefaultPosition'];
             var boxFocusOnLoad = localSettings['boxFocusOnLoad'];
-            
+
             if (boxFocusOnLoad['selector'] != "") {
                 _setControlFocus(boxFocusOnLoad.selector);
                 return "loadFocus";
@@ -990,15 +1017,50 @@
             return isOpen;
         };
 
+
+
         /* OBJETOS DE REFERÊNCIA */
         this.setBoxType = function (boxType) {
-            if ($.allSIGEDynamicMessageBoxSettings().isValidWithNewValue('boxType', boxType)) {
-                loMBSettings['main'].setBoxType(boxType);
-            }
+            var boxType = $.allSIGEDynamicMessageBoxSettings({ boxType : boxType }).getAMBSetting('boxType');
+            loMBSettings['main'].setBoxType(boxType);
             return this;
         }
 
+        this.setBoxShowHeaderControls = function (boxShowHeaderControls) {
+            var boxShowHeaderControls = $.allSIGEDynamicMessageBoxSettings({ boxShowHeaderControls: boxShowHeaderControls }).getAMBSetting('boxShowHeaderControls');
+            loMBSettings['header-options'].setBoxShowHeaderControls(boxShowHeaderControls);
+            return this;
+        };
 
+        this.setBoxSize = function (boxSize, effect) {
+            var boxSize = $.allSIGEDynamicMessageBoxSettings({ boxSize: boxSize }).getAMBSetting('boxSize');
+            loMBSettings['main'].setBoxSize(boxSize, effect);
+            return this;
+        }
+
+        this.setTopPosition = function (topPosition, effect, callback) {
+            var topPosition = $.allSIGEDynamicMessageBoxSettings({ topPosition: topPosition }).getAMBSetting('topPosition');
+            loMBSettings['main'].setTopPosition(topPosition, effect, callback);
+            return this;
+        }
+
+        this.setDefaultStyle = function (defaultStyle) {
+            var defaultStyle = $.allSIGEDynamicMessageBoxSettings({ defaultStyle: defaultStyle }).getAMBSetting('defaultStyle');
+            loMBSettings['main'].setDefaultStyle(defaultStyle);
+            return this;
+        }
+
+        this.setBoxMessage = function (boxMessage) {
+            var boxMessage = $.allSIGEDynamicMessageBoxSettings({ boxMessage: boxMessage }).getAMBSetting('boxMessage');
+            loMBSettings['message-content'].setContent(boxMessage);
+            return this;
+        }
+
+        this.setBoxTitle = function (boxTitle) {
+            var boxTitle = $.allSIGEDynamicMessageBoxSettings({ boxTitle: boxTitle }).getAMBSetting('boxTitle');
+            loMBSettings['header-content'].setContent(boxTitle);
+            return this;
+        }
 
         return this;
     };
