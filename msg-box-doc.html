@@ -117,7 +117,7 @@
         <section class="main-struct main-content container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20">
-                    <p class="n-p-n-m text-right">Último Update: 17/07/2016</p>
+                    <p class="n-p-n-m text-right">Último Update: 27/07/2016</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="border-no-radius m-t-20" style="padding: 5px;">
@@ -158,7 +158,7 @@
                     <h4>DEFININDO A CONFIGURAÇÃO INICIAL</h4>
                     <p>Para o funcionamento da DOC, será adotada a seguinte configuração padrão pelo plugin (lembrando que qualquer uma dessas configurações podem ser alteradas na chamada da função do plugin)</p>
                     <pre><code class="hljs">$.allSIGEDynamicMessageBoxSettings({
-                            boxTitle: "allSIGE MessageBox TITLE DEFAULT", closeOnClickModal: true,
+                            boxTitle: "allSIGE MessageBox TITLE DEFAULT"
                     }, true);</code></pre>
                     <p>
                         A configuração não é obrigatória inicialmente. Ela será usada apenas para uma configuração padrão entre todas as janelas de mensagens, para que não exista a necessidade de informar a mesma configuração para todas as mensagens exibidas.
@@ -167,7 +167,7 @@
                     <pre><code class="hljs">$.allSIGEDynamicMessageBox({
                             boxMessage: "allSIGE MessageBox Simple Example!"
                     });</code></pre>
-                    <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'allSIGE MessageBox Simple Example!' })" class="btn btn-primary">MESSAGE BOX EXAMPLE!</button>
+                    <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'allSIGE MessageBox Simple Example!', boxTitle: 'allSIGE MessageBox TITLE DEFAULT', defaultStyle: 'style02' })" class="btn btn-primary">MESSAGE BOX EXAMPLE!</button>
                     <hr>
                     <p>Todas as demais configurações como botões, estilo do modal, tamanho do modal, etc... assumem um padrão se não definidos.</p>
                 </div>
@@ -180,6 +180,17 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="col-lg-12 table-responsive">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <label class="control-label">ESCOLHA O ESTILO</label>
+                                <select class="form-control">
+                                    <option value="style01">STYLE 01</option>
+                                    <option value="style02">STYLE 02</option>
+                                    <option value="facebook">FACEBOOK</option>
+                                    <option value="google">GOOGLE</option>
+                                </select>
+                            </div>
+                        </div>
                         <h4>PARÂMETROS</h4>
                         <table class="table table-condensed table-bordered table-details vertical-middle">
                             <thead>
@@ -195,7 +206,7 @@
                             <tr>
                                 <td class="td-title" colspan="5">INSIDE BOX PARAMETERS</td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxType</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"none"</span></td>
@@ -213,7 +224,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxType: var_boxType() });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxSize</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"md"</span></td>
@@ -233,7 +244,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxSize: var_boxSize() });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxTitle</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"allSIGE MessageBox"</span></td>
@@ -246,7 +257,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxTitle: 'NOVO TÍTULO' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxMessage</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">""</span></td>
@@ -259,7 +270,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'NOVA DESCRIÇÃO' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxButtonAlign</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><strong>right</strong></td>
@@ -272,7 +283,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxButtonAlign: 'center' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxShowIcon</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
                                 <td><strong>false</strong></td>
@@ -285,7 +296,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxTypeIcon</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -298,7 +309,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone', boxTypeIcon: { 'none': { type: 'ico', val: 'fa fa-bank' } }  });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxShowHeaderControls</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
                                 <td><strong>true</strong></td>
@@ -311,7 +322,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxShowHeaderControls: false });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxAutoClose</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -324,7 +335,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxAutoClose: { timeout: 5, message: 'Closing in %s% seconds...' } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxAlternateReturn</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -337,7 +348,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxAlternateReturn: { selector: '.message-box-header', close: true }, boxMessage: 'Clique no header para executar o onSuccess do Plugin' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxHeaderButtons</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -350,7 +361,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxHeaderButtons: [{ return: 'BANK', close: true, iconClass: 'fa fa-bank', props: { element: 'li', attribs: {} } }, { return: 'NONE', close: true, iconClass: 'fa fa-close', props: { element: 'li', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxButtons</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -363,7 +374,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-parameters">
+                            <tr class="">
                                 <th><strong>boxButtonDefaultPosition</strong></th>
                                 <td><span class="doc-type doc-type-integer">int</span></td>
                                 <td><strong>1</strong></td>
@@ -380,7 +391,7 @@
                             <tr>
                                 <td class="td-title" colspan="5">OUTSIDE BOX PARAMETERS</td>
                             </tr>
-                            <tr class="tr-p-box-outside-parameters">
+                            <tr class="">
                                 <th><strong>effects</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
@@ -393,7 +404,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ effects: { modalIn: 'fadeIn', modalOut: 'fadeOut', boxIn: 'zoomInLeft', boxOut: 'zoomOutRight' } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-outside-parameters">
+                            <tr class="">
                                 <th><strong>defaultStyle</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><strong>style01</strong></td>
@@ -406,7 +417,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ defaultStyle: 'style01' });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-outside-parameters">
+                            <tr class="">
                                 <th><strong>closeOnClickModal</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
                                 <td><strong>true</strong></td>
@@ -419,7 +430,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ closeOnClickModal: false });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-outside-parameters">
+                            <tr class="">
                                 <th><strong>topPosition</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><strong>100px</strong></td>
@@ -438,7 +449,7 @@
                             <tr>
                                 <td class="td-title" colspan="5">CALLBACKS</td>
                             </tr>
-                            <tr class="tr-p-box-callbacks">
+                            <tr class="">
                                 <th><strong>onSuccess</strong></th>
                                 <td><span class="doc-type doc-type-function">function(...) { }</span></td>
                                 <td></td>
@@ -451,7 +462,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ return: 'BOTAO1', close: true, iconClass: 'fa fa-bank' }, { return: 'BOTAO2', close: true, iconClass: 'fa fa-close' }], onSuccess: function (result) { alert('RESULTADO: ' + result.result); } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-callbacks">
+                            <tr class="">
                                 <th><strong>onBeforeShow</strong></th>
                                 <td><span class="doc-type doc-type-function">function(...) { }</span></td>
                                 <td></td>
@@ -464,7 +475,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ onBeforeShow: function () { alert('BEFORE SHOW'); } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-callbacks">
+                            <tr class="">
                                 <th><strong>onAfterShow</strong></th>
                                 <td><span class="doc-type doc-type-function">function(...) { }</span></td>
                                 <td></td>
@@ -477,7 +488,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ onAfterShow: function () { alert('AFTER SHOW'); } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-callbacks">
+                            <tr class="">
                                 <th><strong>onBeforeClose</strong></th>
                                 <td><span class="doc-type doc-type-function">function(...) { }</span></td>
                                 <td></td>
@@ -490,7 +501,7 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ onBeforeClose: function () { alert('BEFORE CLOSE'); } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
-                            <tr class="tr-p-box-callbacks">
+                            <tr class="">
                                 <th><strong>onAfterClose</strong></th>
                                 <td><span class="doc-type doc-type-function">function(...) { }</span></td>
                                 <td></td>

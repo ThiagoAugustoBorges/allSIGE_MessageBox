@@ -123,7 +123,6 @@ h1, h2, h3, h4, h5, h6{
     padding: 15px 15px;
     background-color: #1a99c5;
     color: #FFF;
-    box-shadow: 0px 0px 1px #b9b9b9;
 }
 .comum-box{
     padding: 2px 20px 2px 20px;
@@ -153,8 +152,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .td-title{
-    background-color: #1a99c5;
-    color: #FFF;
+    background-color: #fff;
+    color: #1A99C5;
     font-size: 17px;
     cursor: default;
     font-family: 'Consolas', monospace;
