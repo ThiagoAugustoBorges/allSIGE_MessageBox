@@ -184,3 +184,15 @@ h1, h2, h3, h4, h5, h6{
     border: none !important;
     border-bottom: 1px solid rgb(222, 222, 222) !important;
 }
+
+.no-click, .click-class{
+    cursor: pointer;
+    width: 100%;
+    border: 1px solid gray;
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.click-class{
+    
+}

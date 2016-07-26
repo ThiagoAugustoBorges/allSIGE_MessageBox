@@ -1018,7 +1018,7 @@
             return this;
         }
 
-        this.setBoxShowHeaderControls = function (boxShowHeaderControls) {
+        this.setBoxShowHeaderControls = function () {
             var boxShowHeaderControls = $.allSIGEDynamicMessageBoxSettings({ boxShowHeaderControls: boxShowHeaderControls }).getAMBSetting('boxShowHeaderControls');
             loMBSettings['header-options'].setBoxShowHeaderControls(boxShowHeaderControls);
             return this;

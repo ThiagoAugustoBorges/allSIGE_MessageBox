@@ -192,6 +192,7 @@
                             </div>
                         </div>
                         <h4>PARÂMETROS</h4>
+
                         <table class="table table-condensed table-bordered table-details vertical-middle">
                             <thead>
                             <tr>
@@ -206,11 +207,12 @@
                             <tr>
                                 <td class="td-title" colspan="5">INSIDE BOX PARAMETERS</td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxType</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"none"</span></td>
-                                <script>var var_boxType = function(){ return $('#sel_boxType').val(); }</script>
                                 <td>
                                     <select id="sel_boxType" class="form-control" title="select" name="select">
                                         <option value="none">none (default value)</option>
@@ -221,14 +223,15 @@
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxType: var_boxType() });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxType($('#sel_boxType').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxSize</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"md"</span></td>
-                                <script>var var_boxSize = function(){ return $('#sel_boxSize').val(); }</script>
                                 <td>
                                     <select id="sel_boxSize" class="form-control" title="select" name="select">
                                         <option value="xs">xs</option>
@@ -241,63 +244,79 @@
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxSize: var_boxSize() });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxSize($('#sel_boxSize').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxTitle</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">"allSIGE MessageBox"</span></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxTitle" class="form-control" title="select" name="select">
+                                        <option value="My TITLE">My TITLE</option>
+                                        <option value="DANGER!">DANGER!</option>
+                                        <option selected="selected" value="allSIGE MessageBox">allSIGE MessageBox (default value)</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxTitle: 'NOVO TÍTULO' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxTitle($('#sel_boxTitle').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxMessage</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><span class="doc-type doc-type-string">""</span></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxMessage" class="form-control" title="select" name="select">
+                                        <option value="Não foi possível atender sua solicitação!">Não foi possível atender sua solicitação!</option>
+                                        <option selected="selected" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada enim sed enim venenatis dapibus. Nullam non condimentum nisl, vitae lacinia dui. Cras non vehicula diam, ac eleifend nunc. Maecenas vulputate turpis sed eros interdum aliquam. Pellentesque ornare semper ante sed sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam et laoreet massa, ac sodales elit. Proin non tellus id mi gravida vestibulum. In in elit vel velit feugiat ultricies et sed ante. Fusce vitae varius felis. Sed eget facilisis mi. Etiam efficitur, dolor quis venenatis faucibus, velit orci accumsan urna, et egestas magna turpis non magna. Cras placerat pulvinar condimentum. Sed tempus, nisl quis pellentesque iaculis, ex lectus faucibus libero, et faucibus erat ex nec risus.">Lorem ipsum dolor sit amet.....</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxMessage: 'NOVA DESCRIÇÃO' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxMessage($('#sel_boxMessage').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxButtonAlign</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
                                 <td><strong>right</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxButtonAlign" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="right">right (default value)</option>
+                                        <option value="left">left</option>
+                                        <option value="center">center</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtonAlign: 'center' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxButtonAlign($('#sel_boxButtonAlign').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxShowIcon</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
                                 <td><strong>false</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxShowIcon" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="false">false (default value)</option>
+                                        <option value="true">true</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxShowIcon($('#sel_boxShowIcon').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
-                                <th><strong>boxTypeIcon</strong></th>
+                                <th><strong>boxTypeIcon (RESOLVEEEERRR)</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
                                 <td>
@@ -309,45 +328,59 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxShowIcon: true, boxMessage: 'Mensagem do ícone', boxTypeIcon: { 'none': { type: 'ico', val: 'fa fa-bank' } }  });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxShowHeaderControls</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
                                 <td><strong>true</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxShowHeaderControls" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="true">true (default value)</option>
+                                        <option value="false">false</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxShowHeaderControls: false });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxShowHeaderControls($('#sel_boxShowHeaderControls').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxAutoClose</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxAutoClose" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">timeout: 0, message: 'Closing in %s% seconds...' (default value)</option>
+                                        <option value="2">timeout: 10, message: 'Closing in %s% seconds...'</option>
+                                        <option value="3">timeout: 5, message: '%s% seconds to close...'</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxAutoClose: { timeout: 5, message: 'Closing in %s% seconds...' } });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxAutoClose($('#sel_boxAutoClose').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxAlternateReturn</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
                                 <td><strong></strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxAlternateReturn" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">selector: "", close: false (default value)</option>
+                                        <option value="2">selector: "strong[id='click-me']", close: false</option>
+                                        <option value="3">selector: "li.click-class", close: false</option>
+                                        <option value="4">selector: "#btn-exit", close: true</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxAlternateReturn: { selector: '.message-box-header', close: true }, boxMessage: 'Clique no header para executar o onSuccess do Plugin' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxAlternateReturn($('#sel_boxAlternateReturn').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxHeaderButtons</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
@@ -361,6 +394,8 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxHeaderButtons: [{ return: 'BANK', close: true, iconClass: 'fa fa-bank', props: { element: 'li', attribs: {} } }, { return: 'NONE', close: true, iconClass: 'fa fa-close', props: { element: 'li', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxButtons</strong></th>
                                 <td><span class="doc-type doc-type-object">object{ }</span></td>
@@ -374,6 +409,8 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
                             <tr class="">
                                 <th><strong>boxButtonDefaultPosition</strong></th>
                                 <td><span class="doc-type doc-type-integer">int</span></td>
@@ -387,6 +424,8 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ boxButtonDefaultPosition: 2, boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
 
                             <tr>
                                 <td class="td-title" colspan="5">OUTSIDE BOX PARAMETERS</td>
