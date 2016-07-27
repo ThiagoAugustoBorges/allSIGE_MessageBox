@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="doc/img/favicon.png" />
+    <title>allSIGE - MessageBox</title>
+	<meta name="description" content="JQuery plugin for MessageBox or DialogBox">
+	
+	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="doc/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="doc/css/style.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/allSIGE-dynamic-messageBox.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="doc/vendors/code-mirror/lib/codemirror.css"> 
+
+	<script src="doc/js/jquery.mim.js"></script>
+	<script type="application/javascript" src="js/allSIGE-dynamic-messageBox.js"></script>
+    <script src="doc/vendors/code-mirror/lib/codemirror.js"></script>
+    <script src="doc/vendors/code-mirror/mode/javascript/javascript.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-50467829-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body style="position: relative;">
+    <div class="container-fluid">
+        <div class="row header-mark">
+            <img style="width: 200px; padding: 5px;" src="doc/img/logo-x-small.png" alt="Logomark" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron border-no-radius">
+            <h2>allSIGE Message Box - JQuery</h2>
+            <span>allSIGE Message Box é um plugin <strong>JQuery</strong> simples para notificações de mensagens em uma página da Web em um determinado momento ou em um clique de botão (ou mesmo uma parte de uma função do botão). Decida por si mesmo quando você irá disparar uma notificação. Use apenas como um notificador de mensagens, evite o uso de qualquer tipo de input de dados pois o propósito inicial do plugin não é esse.</span>
+            <div class="row">
+                <div class="col-sm-12 box-buttons">
+                    <button onclick="DocExem1()" class="btn btn-md btn-primary" role="button">EXEMPLO 1</button>
+                    <button onclick="DocExem2()" class="btn btn-md btn-info" role="button">EXEMPLO 2</button>
+                    <button onclick="DocExem3()" class="btn btn-md btn-primary" role="button">EXEMPLO 3</button>
+                    <button onclick="DocExem4()" class="btn btn-md btn-info" role="button">EXEMPLO 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Documentação</h4>
+                <p>Para acessar a documentação clique <a href="msg-box-doc.html">aqui</a>.</p>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Instalação</h4>
+                <p>Requerido JQuery 1.1x~ (2.x~ Recomendado).</p>
+                <p>Utilização de classes do Twitter Bootstrap para os botões, porém sem o uso obrigatório.</p>
+                <div class="row">
+                    <div class="col-xs-12 jumbotron border-no-radius" style="padding: 7px;margin-top: 0px;">
+                        <code><span class="c">&lt;link rel=</span>"stylesheet" <span class="c">href=</span>"css/allSIGE-dynamic-messageBox.css"<span class="c">/&gt;</span></code>
+                        <br/>
+                        <code><span class="c">&lt;script src=</span>"js/jquery.js"<span class="c">>&lt;/script/&gt;</span></code>
+                        <br/>
+                        <code><span class="c">&lt;script src=</span>"js/allSIGE-dynamic-messageBox.js"<span class="c">>&lt;/script/&gt;</span></code>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2016 allSIGE, Inc.</p>
+        </footer>
+    </div>
+
+
+
+<script>
+    $.allSIGEDynamicMessageBoxSettings({ defaultStyle: "style02", boxTitle: "BASIC TITLE" }, true);
+    function DocExem1() {
+        $.allSIGEDynamicMessageBox({
+            boxType: "none",
+            
+            boxHeaderButtons: [
+                {
+                    iconClass: "fa fa-close",
+                    close: false,
+                },
+                {
+                    iconClass: "fa fa-bank",
+                    return:"BANK"
+                },
+                {
+                    iconClass: "fa fa-ban"
+                }
+            ],
+            onSuccess: function (data) {
+                console.log(data);
+            },
+            boxMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        });
+    }
+    function DocExem2() {
+        $.allSIGEDynamicMessageBox({
+            boxType: "success",
+            boxMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            boxButtons: [
+                {
+                    iconClass: "fa fa-close"
+                },
+                {
+                    iconClass: "fa fa-envelope"
+                },
+                {
+                    iconClass: "fa fa-gear"
+                }
+            ],
+            effects: { boxIn: "zoomIn", boxOut: "zoomOut" },
+        });
+    }
+    function DocExem3() {
+        $.allSIGEDynamicMessageBox({
+            boxType: "error",
+            boxMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            boxButtons: [
+                {
+                    iconClass: "fa fa-close",
+                    label: "FECHAR AGORA"
+                },
+            ],
+            boxSize: "lg",
+            boxButtonAlign: "center",
+            boxShowIcon: true,
+            boxTypeIcon: {
+                "error": { type: "ico", val: "fa fa-close" },
+            },
+            boxAutoClose: { timeout: 6, message: "Closing in %s% seconds..." },
+        });
+    }
+
+
+    function DocExem4() {
+        $.allSIGEDynamicMessageBox({
+            defaultStyle: "style01",
+            boxType: "error",
+            boxMessage: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            boxButtons: [
+                {
+                    iconClass: "fa fa-external-link-square",
+                    label: "VISITAR GOOGLE.COM",
+                    props: {
+                        element: "a", attribs: {
+                            "href": "https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=google%20search",
+                            "target": "_blank"
+                        }
+                    },
+                },
+            ],
+        });
+    }
+</script>
+
+
+</body>
+</html>

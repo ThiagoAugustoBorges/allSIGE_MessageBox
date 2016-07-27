@@ -88,6 +88,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="margin-right: 5px;" class="fa fa-cube icon"></span>PLUGINS <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-icons" style="min-width: 325px; max-width: 325px; right: 0;">
 
+							    <li><span class="fa fa-thumb-tack icon"></span><a class="featured" target="_blank" href="http://plugins.allsige.com/allSIGE_AsideBar/aside-bar.html">allSIGE AsideBar</a></li>
+                                <li><span class="fa fa-file-code-o icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_AsideBar/aside-bar-doc.html">allSIGE AsideBar - DOC</a></li>
+								
+								<li class="divider"></li>
                                 <li><span class="fa fa-commenting icon"></span><a class="featured" target="_blank" href="http://plugins.allsige.com/allSIGE_MessageBox/msg-box.html">allSIGE MessageBox</a></li>
                                 <li><span class="fa fa-file-code-o icon"></span><a target="_blank" href="http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html">allSIGE MessageBox - DOC</a></li>
 
@@ -183,11 +187,12 @@
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
                                 <label class="control-label">ESCOLHA O ESTILO</label>
-                                <select class="form-control">
+                                <select style="background-color: rgb(236, 254, 165) !important;" id="chose-style" class="form-control">
                                     <option value="style01">STYLE 01</option>
-                                    <option value="style02">STYLE 02</option>
+                                    <option selected value="style02">STYLE 02</option>
                                     <option value="facebook">FACEBOOK</option>
                                     <option value="google">GOOGLE</option>
+                                    <option value="bootstrap">BOOTSTRAP</option>
                                 </select>
                             </div>
                         </div>
@@ -199,7 +204,7 @@
                                 <th>PROP.</th>
                                 <th>TYPE</th>
                                 <th>DEFAULT</th>
-                                <th>VALUE</th>
+                                <th width="260px">VALUE</th>
                                 <th>DO IT!</th>
                             </tr>
                             </thead>
@@ -212,7 +217,7 @@
                             <tr class="">
                                 <th><strong>boxType</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><span class="doc-type doc-type-string">"none"</span></td>
+                                <td><strong class="doc-type doc-type-string">"none"</strong></td>
                                 <td>
                                     <select id="sel_boxType" class="form-control" title="select" name="select">
                                         <option value="none">none (default value)</option>
@@ -231,7 +236,7 @@
                             <tr class="">
                                 <th><strong>boxSize</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><span class="doc-type doc-type-string">"md"</span></td>
+                                <td><strong class="doc-type doc-type-string">"md"</strong></td>
                                 <td>
                                     <select id="sel_boxSize" class="form-control" title="select" name="select">
                                         <option value="xs">xs</option>
@@ -252,7 +257,7 @@
                             <tr class="">
                                 <th><strong>boxTitle</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><span class="doc-type doc-type-string">"allSIGE MessageBox"</span></td>
+                                <td><strong class="doc-type doc-type-string">"allSIGE MessageBox"</strong></td>
                                 <td>
                                     <select id="sel_boxTitle" class="form-control" title="select" name="select">
                                         <option value="My TITLE">My TITLE</option>
@@ -269,7 +274,7 @@
                             <tr class="">
                                 <th><strong>boxMessage</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><span class="doc-type doc-type-string">""</span></td>
+                                <td><strong class="doc-type doc-type-string">""</strong></td>
                                 <td>
                                     <select id="sel_boxMessage" class="form-control" title="select" name="select">
                                         <option value="Não foi possível atender sua solicitação!">Não foi possível atender sua solicitação!</option>
@@ -285,7 +290,7 @@
                             <tr class="">
                                 <th><strong>boxButtonAlign</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><strong>right</strong></td>
+                                <td><strong class="doc-type doc-type-string">"right"</strong></td>
                                 <td>
                                     <select id="sel_boxButtonAlign" class="form-control" title="select" name="select">
                                         <option selected="selected" value="right">right (default value)</option>
@@ -302,7 +307,7 @@
                             <tr class="">
                                 <th><strong>boxShowIcon</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
-                                <td><strong>false</strong></td>
+                                <td><strong class="doc-type doc-type-boolean">false</strong></td>
                                 <td>
                                     <select id="sel_boxShowIcon" class="form-control" title="select" name="select">
                                         <option selected="selected" value="false">false (default value)</option>
@@ -316,9 +321,9 @@
 
 
                             <tr class="">
-                                <th><strong>boxTypeIcon (RESOLVEEEERRR)</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <th><strong>boxTypeIcon</strong></th>
+                                <td><span class="doc-type doc-type-object">object{ <span class="doc-type doc-type-string">"string"</span>: { type: <span class="doc-type doc-type-string">"string"</span>, val: <span class="doc-type doc-type-string">"string"</span> } }</span></td>
+                                <td><strong><span class="doc-type doc-type-mixed">mixed</span></strong></td>
                                 <td>
                                     <select class="form-control" title="select" name="select">
                                         <option value="">VALOR PADRÃO</option>
@@ -333,7 +338,7 @@
                             <tr class="">
                                 <th><strong>boxShowHeaderControls</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
-                                <td><strong>true</strong></td>
+                                <td><strong class="doc-type doc-type-boolean">true</strong></td>
                                 <td>
                                     <select id="sel_boxShowHeaderControls" class="form-control" title="select" name="select">
                                         <option selected="selected" value="true">true (default value)</option>
@@ -348,8 +353,8 @@
 
                             <tr class="">
                                 <th><strong>boxAutoClose</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <td><span class="doc-type doc-type-object">object{ timeout: <span class="doc-type doc-type-integer">int</span>, message: <span class="doc-type doc-type-string">"string"</span> }</span></td>
+                                <td><strong class="doc-type doc-type-object"><span class="doc-type doc-type-integer">0</span>, <span class="doc-type doc-type-string">"Closing in %s% seconds..."</span></strong></td>
                                 <td>
                                     <select id="sel_boxAutoClose" class="form-control" title="select" name="select">
                                         <option selected="selected" value="1">timeout: 0, message: 'Closing in %s% seconds...' (default value)</option>
@@ -365,8 +370,8 @@
 
                             <tr class="">
                                 <th><strong>boxAlternateReturn</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <td><span class="doc-type doc-type-object">object{ selector: <span class="doc-type doc-type-string">"string"</span>, close: <span class="doc-type doc-type-boolean">boolean</span> }</span></td>
+                                <td><strong class="doc-type doc-type-object"><span class="doc-type doc-type-string">""</span>, <span class="doc-type doc-type-boolean">true</span></strong></td>
                                 <td>
                                     <select id="sel_boxAlternateReturn" class="form-control" title="select" name="select">
                                         <option selected="selected" value="1">selector: "", close: false (default value)</option>
@@ -383,30 +388,38 @@
 
                             <tr class="">
                                 <th><strong>boxHeaderButtons</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <td><span class="doc-type doc-type-array">array[<span class="doc-type doc-type-object">{ }</span>, <span class="doc-type doc-type-object">{ }</span>, <span class="doc-type doc-type-object">{ }</span>, ...]</span></td>
+                                <td><strong class="doc-type doc-type-array">array[<span class="doc-type doc-type-object">{ iconClass: <span class="doc-type doc-type-string">"fa fa-close"</span> }</span>]</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxHeaderButtons" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">Close (default value)</option>
+                                        <option value="2">Close and Bank</option>
+                                        <option value="3">Close, Bank and Adjust</option>
+                                        <option value="4">Bug, Beer and Bus</option>
+                                        <option value="5">Bluetooth</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxHeaderButtons: [{ return: 'BANK', close: true, iconClass: 'fa fa-bank', props: { element: 'li', attribs: {} } }, { return: 'NONE', close: true, iconClass: 'fa fa-close', props: { element: 'li', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxHeaderButtons($('#sel_boxHeaderButtons').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
 
 
                             <tr class="">
                                 <th><strong>boxButtons</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <td><span class="doc-type doc-type-array">array[<span class="doc-type doc-type-object">{ }</span>, <span class="doc-type doc-type-object">{ }</span>, <span class="doc-type doc-type-object">{ }</span>, ...]</span></td>
+                                <td><strong class="doc-type doc-type-array">array[<span class="doc-type doc-type-object">{ label: <span class="doc-type doc-type-string">"OK"</span> }</span>]</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxButtons" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">OK (default value)</option>
+                                        <option value="2">OK, Cancel</option>
+                                        <option value="3">OK, Retry and Cancel</option>
+                                        <option value="4">Redirect to Google, Call Function and Close</option>
+                                        <option value="5">Call Function, Write 'Hello!'</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxButtons($('#sel_boxButtons').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
 
@@ -414,16 +427,20 @@
                             <tr class="">
                                 <th><strong>boxButtonDefaultPosition</strong></th>
                                 <td><span class="doc-type doc-type-integer">int</span></td>
-                                <td><strong>1</strong></td>
+                                <td><strong class="doc-type doc-type-integer">1</strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_boxButtonDefaultPosition" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">1 (default value)</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ boxButtonDefaultPosition: 2, boxButtons: [{ label: 'BOTÃO 1', class: 'btn', return: 'OK', close: true, iconClass: 'fa fa-bank', props: { element: 'button', attribs: {} } }, { label: 'BOTÃO 2', class: 'btn', return: 'OK', close: true, iconClass: '', props: { element: 'button', attribs: {} } }] });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__boxButtonDefaultPosition($('#sel_boxButtonDefaultPosition').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+
 
 
 
@@ -432,21 +449,25 @@
                             </tr>
                             <tr class="">
                                 <th><strong>effects</strong></th>
-                                <td><span class="doc-type doc-type-object">object{ }</span></td>
-                                <td><strong></strong></td>
+                                <td><span class="doc-type doc-type-object">object{ modalIn, modalOut, boxIn, boxOut }</span></td>
+                                <td><strong><span class="doc-type doc-type-string">"fadeIn"</span>,<span class="doc-type doc-type-string">"fadeOut"</span>,<span class="doc-type doc-type-string">"fadeIn"</span>,<span class="doc-type doc-type-string">"fadeOut"</span></strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_effects" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">"fadeIn","fadeOut","fadeIn","fadeOut" (default value)</option>
+                                        <option value="2">"fadeIn","fadeOut","rotateIn","rotateOut"</option>
+                                        <option value="3">"fadeIn","fadeOut","tada","fadeOutLeftBig"</option>
+                                        <option value="4">"flash","fadeOut","fadeInDown","fadeOutUp"</option>
+                                        <option value="5">"flipInY","fadeOut","flipInX","flipOutX"</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ effects: { modalIn: 'fadeIn', modalOut: 'fadeOut', boxIn: 'zoomInLeft', boxOut: 'zoomOutRight' } });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__effects($('#sel_effects').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
                             <tr class="">
                                 <th><strong>defaultStyle</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><strong>style01</strong></td>
+                                <td><strong><span class="doc-type doc-type-string">"style02"</span></strong></td>
                                 <td>
                                     <select class="form-control" title="select" name="select">
                                         <option value="">VALOR PADRÃO</option>
@@ -459,27 +480,30 @@
                             <tr class="">
                                 <th><strong>closeOnClickModal</strong></th>
                                 <td><span class="doc-type doc-type-boolean">boolean</span></td>
-                                <td><strong>true</strong></td>
+                                <td><strong><span class="doc-type doc-type-boolean">true</span></strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_closeOnClickModal" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="true">true (default value)</option>
+                                        <option value="false">false</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ closeOnClickModal: false });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__closeOnClickModal($('#sel_closeOnClickModal').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
                             <tr class="">
                                 <th><strong>topPosition</strong></th>
                                 <td><span class="doc-type doc-type-string">"string"</span></td>
-                                <td><strong>100px</strong></td>
+                                <td><strong><span class="doc-type doc-type-string">"100px"</span></strong></td>
                                 <td>
-                                    <select class="form-control" title="select" name="select">
-                                        <option value="">VALOR PADRÃO</option>
+                                    <select id="sel_topPosition" class="form-control" title="select" name="select">
+                                        <option selected="selected" value="1">100px (default value)</option>
+                                        <option value="2">1%</option>
+                                        <option value="3">10px</option>
                                     </select>
                                 </td>
                                 <td width="100px;" align="right">
-                                    <button onclick="$.allSIGEDynamicMessageBox({ topPosition: '320px' });" class="btn btn-primary">EXECUTE!</button>
+                                    <button onclick="EX__topPosition($('#sel_topPosition').val())" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
 
