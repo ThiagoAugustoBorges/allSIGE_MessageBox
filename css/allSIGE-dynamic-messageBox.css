@@ -1,7 +1,3 @@
-.tab-content .content-text{
-    overflow: auto !important;
-}
-
 .message-box-modal,
 .message-box-container{
     position: fixed;

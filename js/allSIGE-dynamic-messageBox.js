@@ -1,6 +1,6 @@
 /*
  * PLUGIN: allSIGE MessageBox
- * OWNER: Thiago Augusto Borges - Uberaba MG
+ * OWNER: Thiago Augusto Borges - Brusque SC
  * VERSION: 2.1.0.0
  * INIT: 01/05/2016
  * LICENSE: M.I.T
@@ -55,7 +55,7 @@
             onBeforeClose: function (event) { },
             onAfterClose: function (event) { },
             onModalClosing: function (event) { },
-            onModalClosed: function (event) { },
+            onModalClosed: function (event) { }
         };
 
 
@@ -119,7 +119,7 @@
 
                     }
                 }
-            }
+            };
 
             par.length <= 0 ? par.push(loDefaultButtonConf) : "";
             var loChar = { 9: "TAB", 13: "ENTER" };
@@ -160,7 +160,7 @@
 
                     }
                 }
-            }
+            };
 
             par.length <= 0 ? par.push(loDefaultHeaderButtonConf) : "";
 
@@ -659,7 +659,7 @@
                         $this.addClass(icon['val']);
                     }
                 }
-            },
+            }
         };
 
         //type
