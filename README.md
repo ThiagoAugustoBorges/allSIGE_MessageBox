@@ -6,7 +6,7 @@
 ### 22+ attributes.
 ### 7+ events.
 
-#### GO TO Documentation : [allSIGE MessageBox Documentation](https://www.linkedin.com/in/thiagoaborges?trk=nav_responsive_tab_profile_pic)
+#### GO TO Documentation : [allSIGE MessageBox Documentation](http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html)
 
 ##
 
