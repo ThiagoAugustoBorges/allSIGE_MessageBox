@@ -8,6 +8,8 @@
 
 #### GO TO Documentation : [allSIGE MessageBox Documentation](http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html)
 
+#### Questions? Add on SLACK (allsige.slack.com)
+
 ##
 
 
