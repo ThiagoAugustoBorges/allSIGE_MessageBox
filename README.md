@@ -5,6 +5,7 @@
 ##
 ### 22+ attributes.
 ### 7+ events.
+### 5+ styles.
 
 #### GO TO Documentation : [allSIGE MessageBox Documentation](http://plugins.allsige.com/allSIGE_MessageBox/msg-box-doc.html)
 

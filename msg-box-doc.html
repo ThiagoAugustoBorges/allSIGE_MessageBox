@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="border-no-radius m-t-20" style="padding: 5px;">
-                        <h1 class="mega-title">allSIGE Message Box - DOCUMENTATION</h1>
+                        <h1 class="mega-title">allSIGE MessageBox - DOCUMENTATION</h1>
                     </div>
                 </div>
             </div>
@@ -578,6 +578,35 @@
                                     <button onclick="$.allSIGEDynamicMessageBox({ onAfterClose: function () { alert('AFTER CLOSE'); } });" class="btn btn-primary">EXECUTE!</button>
                                 </td>
                             </tr>
+
+                                <tr class="">
+                                    <th><strong>onModalClosing</strong></th>
+                                    <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                    <td></td>
+                                    <td>
+                                        <select class="form-control" title="select" name="select">
+                                            <option value="">VALOR PADRÃO</option>
+                                        </select>
+                                    </td>
+                                    <td width="100px;" align="right">
+                                        <button onclick="$.allSIGEDynamicMessageBox({ onModalClosing: function (event) { alert('MODAL CLOSING'); console.log(event); } });" class="btn btn-primary">EXECUTE!</button>
+                                    </td>
+                                </tr>
+                                
+                                <tr class="">
+                                    <th><strong>onModalClosed</strong></th>
+                                    <td><span class="doc-type doc-type-function">function(...) { }</span></td>
+                                    <td></td>
+                                    <td>
+                                        <select class="form-control" title="select" name="select">
+                                            <option value="">VALOR PADRÃO</option>
+                                        </select>
+                                    </td>
+                                    <td width="100px;" align="right">
+                                        <button onclick="$.allSIGEDynamicMessageBox({ onModalClosed: function (event) { alert('MODAL CLOSED'); console.log(event); } });" class="btn btn-primary">EXECUTE!</button>
+                                    </td>
+                                </tr>    
+
                             </tbody>
                         </table>
                         <br>
